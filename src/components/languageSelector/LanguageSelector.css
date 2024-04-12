@@ -1,0 +1,39 @@
+.language-selector {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+.language-list {
+  display: none;
+  position: absolute;
+  background: black;
+  min-width: 60px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.language-selector:hover .language-list {
+  display: block;
+  position: absolute;
+  top: 100%; 
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.language-list li {
+  color: white;
+  font-size: 17px;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+.language-list li:hover {
+  color : #9f9f9f;
+}
+
+.language-selector :hover {
+  color : #9f9f9f;;
+}
+  

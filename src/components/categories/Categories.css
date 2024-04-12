@@ -1,0 +1,39 @@
+.conteyner-categories-list-user {
+    display: flex;
+    justify-content: flex-end;
+    align-items:center;
+    color: white;
+    font-size:20px;
+}
+
+.categories{
+    display: flex;
+}
+
+.categories a {
+    text-decoration: none; 
+    color: white; 
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.categoriHotDishes a{
+    color:white;
+}
+
+.categoriHotDishes{
+    font-size:17px;
+    position: absolute;
+    display: block;
+    background: black;
+}
+
+.categories a:hover {
+    color : #9f9f9f;
+}
+
+@media screen and (max-width: 1400px){
+    .categories{
+        display:none; 
+    }
+}

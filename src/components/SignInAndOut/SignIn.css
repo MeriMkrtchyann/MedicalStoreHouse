@@ -1,0 +1,13 @@
+.user {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.fa-user {
+    color : white;
+}
+
+.user :hover {
+    color : #9f9f9f;;
+}

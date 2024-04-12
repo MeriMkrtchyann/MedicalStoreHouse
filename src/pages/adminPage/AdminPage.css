@@ -1,0 +1,56 @@
+/* styles.css */
+
+.searchContainer {
+    position: relative;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: background-color 0.3s ease;
+    margin-right: 12px;
+    width: 100%;
+  }
+  
+  .searchContainer:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+  
+  .searchIconWrapper {
+    padding: 8px;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .searchInput {
+    color: inherit;
+    padding: 8px 12px 8px calc(1em + 40px);
+    transition: width 0.3s ease;
+    width: 100%;
+  }
+  
+  .searchInput:focus {
+    width: 250px;
+  }
+
+  .iconsContainer {
+    display : flex;
+    align-items : center;
+  }
+
+  .iconsContainer > div:hover  {
+    color : #9f9f9f;
+    cursor: pointer;
+  }
+
+  .aboutAdmin:hover{
+    color : #9f9f9f;
+    cursor: pointer;
+  }
+
+  .goShopIcon, .aboutShop, .aboutAdmin, .logOut {
+    margin-right: 15px; 
+    font-size: 25px; 
+    }
+
+    

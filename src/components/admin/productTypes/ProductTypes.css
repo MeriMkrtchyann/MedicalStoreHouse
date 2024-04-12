@@ -1,0 +1,57 @@
+.productTypesContainer {
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid #000; 
+  transform: translateX(50px) translateY(90px);
+  transition: transform 0.3s; 
+  gap : 10px;
+}
+
+.tabel {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+  background-image: red;
+  transform: translateX(50px) translateY(130px);
+}
+
+.tabel th {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.tabel td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tabel ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tabel li {
+  margin-bottom: 4px;
+}
+
+.formControl {
+  width: 100px;
+}
+
+.selectEmpty {
+  margin-top: 16px;
+}
+
+.productTypesContainer button {
+  margin-left: 20px;
+  height : 55px;
+  cursor: pointer; 
+}

@@ -1,0 +1,68 @@
+.allCategories {
+    background-color: #f2f2f2;
+    padding-top: 15px;
+    border-radius: 5px;
+  }
+  
+  .allCategories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .allCategories li {
+    display: flex;
+    justify-content:space-between;
+    background-color: #e0e0e0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s; 
+  }
+  
+  .allCategories li:hover {
+    background-color: #d4d4d4; 
+  }
+  
+  .addCategory {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #000; 
+    transform: translateX(50px) translateY(90px);
+    transition: transform 0.3s; 
+  }
+
+  .addCategory button {
+    margin-left: 20px;
+    cursor: pointer; 
+  }
+
+  .icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .deleteIcon {
+    color: #a60418;
+  }
+
+  .editIcon {
+    color: #ffff11;
+  }
+
+  .deleteIcon:hover {
+    color: #6f0210;
+  }
+
+  .editIcon:hover {
+    color: #7d7d00;
+  }
+
+  .faCheck{
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 20px;
+    margin-left:10px;
+  }

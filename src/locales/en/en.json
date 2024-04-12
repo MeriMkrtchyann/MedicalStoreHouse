@@ -1,0 +1,58 @@
+{
+  "signIn": "Sign In",
+  "emailAddress": "Email Address",
+  "password": "Password",
+  "rememberMe": "Remember Me",
+  "errorText": "Please enter valid login and password.",
+  "loginButton": "Log in",
+  "forgotPassword": "Forgot Password?",
+  "noAccount": "Don't have an account? Sign up",
+
+  "verificationError": "You cannot log in because you have not passed verification.",
+  "validLoginAndPasswordError" : "Please enter valid login and password.",
+
+  "validEmail" : "Please enter valid email",
+
+  "findYourAccount": "Find your account",
+  "enterEmailToSearch": "Please enter your email to search for your account.",
+  "cancelButton": "Cancel",
+  "searchButton": "Search",
+  "newPassword": "New password",
+
+  "verificationEmailSent": "A verification email has been sent to your address. Please check your inbox.",
+  "userCreationFailed": "User creation failed. Please try again.",
+  "emailAlreadyInUse": "An account with this email already exists. Please use a different email or log in.",
+  "invalidEmail": "The email address is not valid. Please enter a valid email address.",
+  "weakPassword": "The password is too weak. Please enter a stronger password.",
+  "registrationError": "An error occurred during registration. Please try again later.",
+  "fillRequiredFields": "Please fill in all the required fields.",
+
+  "signUp" : "Sign Up",
+  "receiveUpdatesLabel": "I want to receive inspiration, marketing promotions and updates via email.",
+  "signUpButton": "Sign Up",
+  "alreadyHaveAccount": "Already have an account? Sign in",
+
+  "firstNameLabel": "First Name",
+  "firstNameError": "First name must be at least 2 characters long.",
+
+  "lastNameLabel": "Last Name",
+  "lastNameError": "Last name must be at least 2 characters long.",
+
+  "username": "Username",
+  "usernameError": "Username must be at least 4 characters long and not exceed 20 characters.",
+
+  "emailLabel": "Email Address",
+  "emailError": "Please enter a valid email address.",
+
+  "phoneLabel": "Contact Number",
+  "phoneError": "Please enter a valid phone number.",
+
+  "addressLabel": "Address",
+  "addressHelperText": "Please enter your address. (Optional)",
+
+  "passwordLabel": "New Password",
+  "passwordError": "Please enter a new password with at least 8 characters (uppercase, lowercase, number, @$!%*?&).",
+
+  "confirmPasswordLabel": "Confirm Password",
+  "confirmPasswordError": "Password confirmation must match the original password."
+}
