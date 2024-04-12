@@ -116,7 +116,6 @@ export default function Login({handleSubmit, setEmail, setPassword, color, error
                   type="submit"
                   fullWidth
                   variant="contained"
-                  // sx={{ mt: 3, mb: 2 }}
                 >
                   {t("loginButton")}
                 </Button>

@@ -1,8 +1,8 @@
 import { getDatabase, ref, get } from "firebase/database";
 
-export default async function readUserData(email) {
+export default async function readAdminData(email) {
     const db = getDatabase();
-    const usersRef = ref(db, 'users');
+    const usersRef = ref(db, 'admins');
     try {
         const snapshot = await get(usersRef);
         if (snapshot.exists()) {
@@ -14,7 +14,7 @@ export default async function readUserData(email) {
             }
         }else {
             console.log("No data available");
-            return null;
+            return false;
         }
     } catch (error) {
         throw new Error("Error reading data");

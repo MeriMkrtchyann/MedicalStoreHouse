@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase/firebase"
 import readUserData from "../../services/users/firebaseGet"
 import { useTranslation } from 'react-i18next';
+import readAdminData from '../../services/admins/firebaseGet';
 
-export default function LoginPage({setActiveUser}) {
+export default function LoginPage({setActiveUser, setAdmin}) {
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -19,12 +20,22 @@ export default function LoginPage({setActiveUser}) {
     event.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      console.log(userCredential)
+      const isAdmin = await readAdminData(email)
+      console.log(isAdmin)
       const user = userCredential.user;
-      if (user.emailVerified) {
+      console.log(user)
+      if (isAdmin ){
+        setAdmin(isAdmin)
+        navigate("/admin")
+        return
+      }else if(user.emailVerified) {
           const activUser = await readUserData(email);
+          console.log(activUser)
           setActiveUser(activUser)
+          setAdmin(null)
           navigate("/");
-      } else {
+      }else {
         setErrorText(t('verificationError'));
         setColor("red");
       }

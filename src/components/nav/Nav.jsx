@@ -21,10 +21,11 @@ export default function Nav({activeUser, setActiveUser}){
                 <BasketShop/>
                 {activeUser ?
                     <>
+                    {console.log(activeUser)}
                         <SignOut setActiveUser={setActiveUser} />
-                        {Object.keys(activeUser).map((id) => (
-                            <UserAvatar key={id} userName={activeUser[id].username} />
-                        ))}
+                        {Object.keys(activeUser).map((id) =>
+                         <UserAvatar key={id} userName={activeUser[id].username} />
+                        )}
                     </>
                 : 
                     <SignIn/>
