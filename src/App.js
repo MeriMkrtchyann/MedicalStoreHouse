@@ -18,7 +18,7 @@ function App() {
           <Route path="/signIn" element={<LoginPage setActiveUser={setActiveUser} setAdmin={setAdmin} />} />
           <Route path="/signUp" element={<SignUpPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
-          <Route path="/admin" element={admin && <AdminPage/>}/>
+          <Route path="/admin" element={admin && <AdminPage setAdmin={setAdmin}/>}/>
       </Routes>
     </>
   );

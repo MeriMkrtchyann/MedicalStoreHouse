@@ -12,8 +12,13 @@ const StyledToolbar = styled(Toolbar)`
   background-color: black;
 `;
 
-export default function AdminNav({drawerWidth}){
+export default function AdminNav({drawerWidth,setAdmin}){
     const navigate = useNavigate()
+
+    const onClickLogOut = () => {
+      setAdmin(null)
+      navigate("/signIn")
+    }
     return(
         <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <StyledToolbar style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -27,7 +32,7 @@ export default function AdminNav({drawerWidth}){
               <div className="aboutAdmin">
                 <AdminIcon/>
               </div>
-              <div className="logOut">
+              <div className="logOut" onClick={onClickLogOut}>
                 <LogOut />
               </div>
               <div className="goShopIcon"  onClick={() => navigate("/")}>
