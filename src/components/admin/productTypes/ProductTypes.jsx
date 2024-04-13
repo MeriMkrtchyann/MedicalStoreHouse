@@ -102,7 +102,7 @@ export default function ProductTypes({ categories }) {
         <thead>
           <tr>
             <th>Category name</th>
-            <th>Types</th>
+            <th>Products</th>
           </tr>
         </thead>
         <tbody>
@@ -112,8 +112,10 @@ export default function ProductTypes({ categories }) {
               <tr key={innerObject.categoryName}>
                 <td>{innerObject.categoryName}</td>
                 <td>
-                    {innerObject.types && Object.keys(innerObject.types).map((type) => (
-                      <p>{type}</p>
+                {console.log(innerObject.Products)}
+                    {innerObject.Products && Object.keys(innerObject.Products).map((product) =>(
+                      <p>{innerObject.Products[product].PraductName
+}</p>
                     ))}
                 </td>
               </tr>
