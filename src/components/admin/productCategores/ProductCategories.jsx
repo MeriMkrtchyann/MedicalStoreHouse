@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import writeCategoresData from "../../../services/categories/FirebaseSetCategories";
-import readCategoresData from "../../../services/categories/firebaseGetCategories"
 import firebaseDeleteCategory from '../../../services/categories/firebaseDeleteCategories';
 import firebaseUpdateCategory from '../../../services/categories/firebaseUpdateCategory'
 import "./ProductCategories.css"
 import { FaPen, FaTrash, FaCheck, FaTimes } from '../../icons/Icons';
 
 
-export default function ProductCategories({categories, setCategories}) {
-  const [category, setCategory] = useState('')
+export default function ProductCategories({categories, setCategories, category, setCategory}) {
   const [editCategory , setEditCategory] = useState('');
   const [editCategoryId, setEditCategoryId] = useState(null);
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const data = await readCategoresData();
-      if (data){
-        setCategories(data)
-      }else {
-        setCategories("")
-      }
-    };
-    fetchCategories();
-  },[categories, category]);
 
   const handleDeleteCategory = async (categoryId ) => {
     try {

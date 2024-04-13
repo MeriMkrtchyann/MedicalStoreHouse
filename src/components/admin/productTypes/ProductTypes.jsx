@@ -87,12 +87,12 @@ export default function ProductTypes({ categories }) {
           })}
         </Select>
       </FormControl>
-      <TextField label="Praduct Id" id="id" value={id} onChange={handleUpdateId} />
-      <TextField label="Praduct Name" id="name" value={name} onChange={handleUpdateName} />
-      <TextField label="Praduct Price" id="price" value={price} onChange={handleUpdatePrice} />
-      <TextField label="Praduct Quantity" id="quantity" value={quantity} onChange={handleUpdateQuantity} />
-      <TextField label="About Praduct" id="about" value={about} onChange={handleUpdateAbout} />
-      <TextField label="Praduct Image" id="image" value={image} onChange={handleUpdateImage} />
+      <TextField label="ID" id="id" value={id} onChange={handleUpdateId} />
+      <TextField label="Name" id="name" value={name} onChange={handleUpdateName} />
+      <TextField label="Price" id="price" value={price} onChange={handleUpdatePrice} />
+      <TextField label="Quantity" id="quantity" value={quantity} onChange={handleUpdateQuantity} />
+      <TextField label="Praduct" id="about" value={about} onChange={handleUpdateAbout} />
+      <TextField label="Image" id="image" value={image} onChange={handleUpdateImage} />
       <Button variant="contained" type="submit"> Add </Button>
     </form>
     </div>
@@ -124,7 +124,7 @@ export default function ProductTypes({ categories }) {
         </tbody>
       </table>
     }
-    </div>
+  </div>
   </div>
   );
 }
