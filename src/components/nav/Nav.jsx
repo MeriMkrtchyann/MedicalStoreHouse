@@ -10,7 +10,7 @@ import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
 
-export default function Nav({activeUser, setActiveUser}){
+export default function Nav({activeUser, setActiveUser, setActiveCategory}){
 
     const [categories, setCategories] = useState([])
 
@@ -25,11 +25,11 @@ export default function Nav({activeUser, setActiveUser}){
     return(
         <nav className='nav'>
             <div className='container'>
-                <PyramidMenu categories={categories}/>
+                <PyramidMenu categories={categories} setActiveCategory={setActiveCategory}/>
                 <Logo/>  
             </div>
             <div className="conteyner-categories-list-user">
-                <Categories categories={categories}/>
+                <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 <LanguageSelector background={"black"}/>
                 <BasketShop/>
                 {activeUser ?

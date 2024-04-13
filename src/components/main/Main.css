@@ -1,0 +1,17 @@
+.main {
+    height: 100vh;
+    background-color:red;
+}
+
+.productsConteyner{
+    padding: 90px 50px;
+    display:flex;
+    gap:40px;
+    background-color:yellow;
+}
+
+.productConteyner{
+    background-color:blue;
+    min-width:290px;
+    height:300px;
+}

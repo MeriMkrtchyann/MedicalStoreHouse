@@ -1,10 +1,8 @@
 import {Link} from "react-router-dom"
-import { useState } from "react";
 import "./Categories.css"
 
-export default function Categories({categories}){
+export default function Categories({categories, setActiveCategory}){
 
-    const [activeCategory, setActiveCategory] = useState(null);
 
     const handleMouseOver = (primary) => setActiveCategory(primary);
     const handleMouseOut = () => setActiveCategory(null);
