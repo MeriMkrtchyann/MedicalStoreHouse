@@ -1,11 +1,11 @@
 import PersistentDrawerLeft from "./persistentDrawer/PersistentDrawer"
 import "./PyramidMenu.css"
 
-export default function PyramidMenu(){
+export default function PyramidMenu({categories}){
 
     return(
         <button className="pyramidButton fa-List" >
-             <PersistentDrawerLeft/>
+             <PersistentDrawerLeft categories={categories}/>
         </button>
     )  
 }

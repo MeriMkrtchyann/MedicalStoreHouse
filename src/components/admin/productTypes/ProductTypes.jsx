@@ -91,7 +91,7 @@ export default function ProductTypes({ categories }) {
       <TextField label="Name" id="name" value={name} onChange={handleUpdateName} />
       <TextField label="Price" id="price" value={price} onChange={handleUpdatePrice} />
       <TextField label="Quantity" id="quantity" value={quantity} onChange={handleUpdateQuantity} />
-      <TextField label="Praduct" id="about" value={about} onChange={handleUpdateAbout} />
+      <TextField label="About" id="about" value={about} onChange={handleUpdateAbout} />
       <TextField label="Image" id="image" value={image} onChange={handleUpdateImage} />
       <Button variant="contained" type="submit"> Add </Button>
     </form>

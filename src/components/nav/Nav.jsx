@@ -7,16 +7,29 @@ import LanguageSelector from "../languageSelector/LanguageSelector";
 import BasketShop from "../basketShop/BasketShop";
 import SignOut from "../SignInAndOut/SignOut";
 import UserAvatar from "../icons/avatars/UserAvatars";
+import readCategoresData from "../../services/categories/firebaseGetCategories.js"
+import { useState, useEffect } from "react";
 
 export default function Nav({activeUser, setActiveUser}){
+
+    const [categories, setCategories] = useState([])
+
+    useEffect(() => {
+        const fetchCategories = async () => {
+            setCategories(await readCategoresData());
+        };
+    
+        fetchCategories();
+    }, []);
+
     return(
         <nav className='nav'>
             <div className='container'>
-                <PyramidMenu/>
+                <PyramidMenu categories={categories}/>
                 <Logo/>  
             </div>
             <div className="conteyner-categories-list-user">
-                <Categories/>
+                <Categories categories={categories}/>
                 <LanguageSelector background={"black"}/>
                 <BasketShop/>
                 {activeUser ?

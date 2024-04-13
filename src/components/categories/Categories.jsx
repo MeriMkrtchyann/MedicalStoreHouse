@@ -2,46 +2,49 @@ import {Link} from "react-router-dom"
 import { useState } from "react";
 import "./Categories.css"
 
-export default function Categories(){
+export default function Categories({categories}){
 
     const [activeCategory, setActiveCategory] = useState(null);
 
     const handleMouseOver = (primary) => setActiveCategory(primary);
     const handleMouseOut = () => setActiveCategory(null);
 
-    const categories = [
-        { primary: 'Components'},
-        { primary: 'Peripherals'},
-        { primary: 'Accessories' },
-        { primary: 'Components'},
-        { primary: 'Security Systems'},
-        { primary: 'Networking' },
-        { primary: 'Tools' },
-      ];
-
     return(
         <div className="categories">
-                {categories.map(({ primary, subcategories }, index) => 
+                {categories && Object.keys(categories).map((key) => {
+                    const innerObject = categories[key];
+                    return(
                     <div    
-                        key={primary}
+                        key={innerObject.categoryId}
                         className="category"
-                        onMouseOver={() => handleMouseOver(primary)} 
+                        onMouseOver={() => handleMouseOver(innerObject.categoryName)} 
                         onMouseOut={handleMouseOut}
                     >
-                        <Link to = {"/"+primary }>{primary}</Link>
-                        <div className="categoriHotDishes">
-                        {activeCategory === primary && (
-                            <div className="subcategory-list">
-                                {subcategories && subcategories.map((subcategory) => (
-                                    <div key={subcategory}>
-                                        <Link to={`/category/${subcategory}`}>{subcategory}</Link>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                        </div>
+                        <Link to = {"/"+innerObject.categoryName }>{innerObject.categoryName}</Link>
                     </div>
-                )}
+                    )
+                })}
+                
         </div>
     )  
 }
+ {/* <List 
+          style={{
+            padding:"0px",
+          }}
+        >
+          {categories && Object.keys(categories).map((key)  => (
+            const innerObject = categories[key];
+            <React.Fragment key={primary} style={{paddingTop:"0px"}}>
+              <ListItem key={primary} disablePadding>
+                <ListItemButton onClick={() => handleCategoryClick(primary)}>
+                  <ListItemText primary={primary} />
+                    {subcategories && subcategories.length > 0 && (
+                      selectedCategory === primary ? <ExpandLessIcon /> : <ExpandMoreIcon />
+                    )}
+                </ListItemButton>
+              </ListItem>
+              <Divider />
+            </React.Fragment>
+          ))}
+        </List> */}

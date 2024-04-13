@@ -53,17 +53,8 @@ const StyledDrawer = styled(Drawer)({
   },
 });
 
-const categories = [
-  { primary: 'Components'},
-  { primary: 'Peripherals'},
-  { primary: 'Accessories' },
-  { primary: 'Components'},
-  { primary: 'Security Systems'},
-  { primary: 'Networking' },
-  { primary: 'Tools' },
-];
 
-export default function PersistentDrawerLeft() {
+export default function PersistentDrawerLeft(categories) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = React.useState(null);
@@ -109,36 +100,30 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List 
-          style={{
-            padding:"0px",
-          }}
-        >
-          {categories && categories.map(({ primary, subcategories }, index) => (
-            <React.Fragment key={primary} style={{paddingTop:"0px"}}>
-              <ListItem key={primary} disablePadding>
-                <ListItemButton onClick={() => handleCategoryClick(primary)}>
-                  <ListItemText primary={primary} />
-                    {subcategories && subcategories.length > 0 && (
-                      selectedCategory === primary ? <ExpandLessIcon /> : <ExpandMoreIcon />
-                    )}
-                </ListItemButton>
-              </ListItem>
-              {subcategories && selectedCategory === primary && (
-                <List>
-                  {subcategories && subcategories.map((subcategory, subIndex) => (
-                    <ListItem key={`${primary}-${subIndex}`} disablePadding>
-                      <ListItemButton onClick={() => console.log(subcategory)} sx={{ pl: 4 }}>
-                        <ListItemText primary={subcategory} />
-                      </ListItemButton>
-                    </ListItem>
-                  ))}
-                </List>
-              )}
-              <Divider />
-            </React.Fragment>
-          ))}
+       
+        <List style={{ padding: "0px" }}>
+          {categories &&
+            Object.keys(categories).map((key) => {
+              const innerObject = categories[key];
+              return (
+                <React.Fragment key={innerObject.categoryId}>
+                  {Object.keys(innerObject).map((subKey) => {
+                    return (
+                      <React.Fragment key={innerObject[subKey].categoryId}  style={{paddingTop:"0px"}}>
+                        <ListItem key={innerObject[subKey].categoryId} disablePadding>
+                          <ListItemButton onClick={() => handleCategoryClick(innerObject[subKey].categoryName)}>
+                            <ListItemText primary={innerObject[subKey].categoryName} />  
+                          </ListItemButton>
+                        </ListItem>
+                        <Divider />
+                      </React.Fragment>
+                    );
+                  })}
+                </React.Fragment>
+              );
+            })}
         </List>
+
       </StyledDrawer>
     </Box>
   );
