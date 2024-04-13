@@ -5,6 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import SideDrawerMenu from '../../components/admin/SideDrawerMenu';
 import AdminNav from '../../components/admin/AdminNav';
 import Categories from '../../components/admin/Categoris';
+import Praducts from '../../components/admin/Types';
+
 import "./AdminPage.css"
 
 const drawerWidth = 240;
@@ -13,6 +15,7 @@ export default function PermanentDrawerLeft({setAdmin}) {
 
   const [openDivMenu , setOpenDivMenu] = useState(null)
   const [categories, setCategories] = useState([])
+  
 
   return (
       <Box sx={{ display: 'flex' }}>
@@ -21,6 +24,9 @@ export default function PermanentDrawerLeft({setAdmin}) {
         <SideDrawerMenu drawerWidth={drawerWidth} setOpenDivMenu={setOpenDivMenu}/>
         {openDivMenu === "Categories" &&
           <Categories categories={categories} setCategories={setCategories} />
+        }
+        {openDivMenu === "Products" &&
+          <Praducts categories={categories}/>
         }
       </Box>
     );

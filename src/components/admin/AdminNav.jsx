@@ -26,17 +26,14 @@ export default function AdminNav({drawerWidth,setAdmin}){
               <SearchBar/>
             </div>
             <div className="iconsContainer">
-              <div className="aboutShop">
-                <ChartColumn />
-              </div>
               <div className="aboutAdmin">
                 <AdminIcon/>
               </div>
-              <div className="logOut" onClick={onClickLogOut}>
-                <LogOut />
-              </div>
               <div className="goShopIcon"  onClick={() => navigate("/")}>
                 <FontAwesomeIcon icon={faShopify} />
+              </div>
+              <div className="logOut" onClick={onClickLogOut}>
+                <LogOut />
               </div>
             </div>
           </StyledToolbar>

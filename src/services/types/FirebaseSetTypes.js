@@ -1,8 +1,8 @@
 import { getDatabase, ref, get, set } from "firebase/database";
 
-export default async function writeTypeData(categoryId, type) {
+export default async function writeTypeData({categoryId, id, name, price, quantity, about, image} ) {
   const db = getDatabase();
-  const typeRef = ref(db, 'categories/' + categoryId + '/types/' + type);
+  const typeRef = ref(db, 'categories/' + categoryId + '/Products/' + id);
 
   try {
     const snapshot = await get(typeRef);
@@ -10,7 +10,12 @@ export default async function writeTypeData(categoryId, type) {
       console.log('Type already exists in this category.');
     } else {
       await set(typeRef, {
-        typeName: type
+        PraductId : id,
+        PraductName: name,
+        PraductPrice : price,
+        PraductQuantity : quantity,
+        PraductAbout : about,
+        PraductImage : image
       });
       console.log('Type successfully added to the category.');
     }

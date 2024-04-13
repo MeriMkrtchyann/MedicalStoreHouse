@@ -53,4 +53,8 @@
     font-size: 25px; 
     }
 
+    .logOut:hover{
+      color : #9f9f9f;
+      cursor: pointer;
+    }
     
