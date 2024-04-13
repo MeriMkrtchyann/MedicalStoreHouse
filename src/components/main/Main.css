@@ -1,11 +1,11 @@
-.main {
+/* .main {
     height: 100vh;
     background-color:red;
 }
 
 .productsConteyner{
     padding: 90px 50px;
-    display:flex;
+    display:inline-block;
     gap:40px;
     background-color:yellow;
 }
@@ -15,3 +15,49 @@
     min-width:290px;
     height:300px;
 }
+
+.product{
+    background-color:green;
+    height:300px;
+} */
+
+/* Стили для карточки продукта */
+.product {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Стили для изображения продукта */
+  .product img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Стили для идентификатора продукта */
+  .product span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  /* Стили для цены продукта */
+  .ProductPrice span {
+    font-size: 18px;
+    color: #007bff; /* Цвет цены (можно изменить) */
+  }
+
+  /* Стили для контейнера продуктов */
+.productsConteyner {
+    display: flex;
+    justify-content: space-between; /* Равномерное распределение между продуктами */
+    flex-wrap: wrap; /* Перенос на следующую строку при нехватке места */
+  }
+  
+  /* Стили для каждой карточки продукта */
+  .productConteyner {
+    flex-basis: calc(33.33% - 20px); /* Ширина каждой карточки (33.33% с учетом отступов) */
+    margin-bottom: 20px;
+  }
+  

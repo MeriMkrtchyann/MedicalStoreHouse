@@ -6,12 +6,15 @@ import getCategoryData from "../../services/allProducts/AllPraducts";
 export default function HomePage ({activeUser, setActiveUser}){
 
     const [activeCategory, setActiveCategory] = useState(null);
-    const [allData , setAllData] = useState(null);
+    const [allData , setAllData] = useState({});
 
-    useEffect(()=>{
-       const data = async () => await getCategoryData()
-       setAllData(data)
-    },[])
+    useEffect(() => {
+        async function fetchData() {
+            const data = await getCategoryData();
+            setAllData(data);
+        }
+        fetchData();
+    }, []);
 
     return (
         <>
