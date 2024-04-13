@@ -12,11 +12,12 @@
     width : 100%;
     background-color : #282e59;
     color: white;
-    padding: 0 50px;
+    padding: 0 25px;
     position: fixed;
 }
 .conteyner-categories-list-user{
     gap: 20px;
+    margin-right:50px;
 }
     
 .container{
@@ -25,7 +26,7 @@
     justify-content : flex-start;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1500px) {
     .container{
         display: flex;
         width : 50%;

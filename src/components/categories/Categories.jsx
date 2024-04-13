@@ -28,23 +28,3 @@ export default function Categories({categories}){
         </div>
     )  
 }
- {/* <List 
-          style={{
-            padding:"0px",
-          }}
-        >
-          {categories && Object.keys(categories).map((key)  => (
-            const innerObject = categories[key];
-            <React.Fragment key={primary} style={{paddingTop:"0px"}}>
-              <ListItem key={primary} disablePadding>
-                <ListItemButton onClick={() => handleCategoryClick(primary)}>
-                  <ListItemText primary={primary} />
-                    {subcategories && subcategories.length > 0 && (
-                      selectedCategory === primary ? <ExpandLessIcon /> : <ExpandMoreIcon />
-                    )}
-                </ListItemButton>
-              </ListItem>
-              <Divider />
-            </React.Fragment>
-          ))}
-        </List> */}
