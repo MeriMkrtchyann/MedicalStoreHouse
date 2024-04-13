@@ -45,17 +45,12 @@ const SideDrawerMenu = ({drawerWidth , setOpenDivMenu}) => {
     variant="permanent"
     anchor="left"
   >
-    <DrawerHeader
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL + "img/loginName.webp"})`,
-        backgroundSize: 'cover',
-      }}
-    >
-    </DrawerHeader>
+    
     <div style={{
       display: 'flex',
       justifyContent: 'center',
-      marginBottom: 10
+      marginBottom: 10,
+      marginTop: 15,
     }}>
     <AdminIcon userName={"Admin"} />
     </div>

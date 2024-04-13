@@ -1,11 +1,10 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
-import { AdminIcon, ChartColumn, LogOut } from '../../components/icons/Icons';
+import { AdminIcon,  LogOut } from '../../components/icons/Icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShopify } from '@fortawesome/free-brands-svg-icons';
 import Toolbar from '@mui/material/Toolbar';
 import { styled } from '@mui/material/styles';
-import SearchBar from '../../components/admin/SearchBar';
 import { useNavigate } from 'react-router-dom';
 
 const StyledToolbar = styled(Toolbar)`
@@ -23,7 +22,6 @@ export default function AdminNav({drawerWidth,setAdmin}){
         <AppBar position="fixed" sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
           <StyledToolbar style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <SearchBar/>
             </div>
             <div className="iconsContainer">
               <div className="aboutAdmin">

@@ -39,11 +39,12 @@ const AdminIcon = ({ userName }) => {
   };
 
   return (
-    <div className="userProfileContainer">
+    <div className="userProfileContainer" >
       <div
         className="profileImageContainer"
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
+        style={{backgroundColor:"black"}}
       >
         {userImage ? (
           <>
@@ -60,7 +61,7 @@ const AdminIcon = ({ userName }) => {
             )}
           </>
         ) : (
-          <div className="initials" onClick={handleImageInputChange}>
+          <div className="initials" onClick={handleImageInputChange} >
             {hovering ? '+' : userName.charAt(0).toUpperCase()}
           </div>
         )}

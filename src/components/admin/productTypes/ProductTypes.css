@@ -4,20 +4,24 @@
   justify-content: center;
   background-color: #f2f2f2;
   padding: 20px;
+  margin-left : 15px;
+  margin-right : 15px;
   border-radius: 5px;
   border: 1px solid #000; 
-  transform: translateX(50px) translateY(90px);
+  transform: translateY(90px);
   transition: transform 0.3s; 
   gap : 10px;
 }
 
 .tabel {
-  width: 100%;
+  width: 50%;
+  margin-left : 15px;
+  margin-right : 15px;
   border-collapse: collapse;
   border: 1px solid #ddd;
   font-family: Arial, sans-serif;
   background-image: red;
-  transform: translateX(50px) translateY(130px);
+  transform: translateY(130px);
 }
 
 .tabel th {
