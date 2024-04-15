@@ -8,7 +8,6 @@ export default function Product({aboutProduct, activeUser, setActiveUser, setAct
     const [count, setCount] = useState(0);
     const [open, setOpen] = useState(false);
 
-    console.log(aboutProduct)
     return(
         <div>
             <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory}/>

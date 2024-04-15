@@ -1,8 +1,10 @@
 import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
-import React from "react";
+import React, { useState } from "react";
 
-const Info = ({aboutProduct, count, setCount }) => {
+const Info = ({aboutProduct }) => {
+
+  const [count , setCount] = useState(0)
 
   const { 
           PraductAbout, 
@@ -11,45 +13,52 @@ const Info = ({aboutProduct, count, setCount }) => {
           PraductName,
           PraductPrice,
           PraductQuantity
-        } = aboutProduct
-  console.log("a" , PraductId)
+  } = aboutProduct
 
-  // const countIncrease = () => {
-  //   setCount((prevValue) => prevValue + 1);
-  // };
-  // const countDecrease = () => {
-  //   if (count === 0) {
-  //     setCount(0);
-  //   } else {
-  //     setCount((prevValue) => prevValue - 1);
-  //   }
-  // };
+  const countIncrease = () => {
+      if (count < PraductQuantity){
+        setCount(count + 1)
+      }
+  };
 
-  // return (
-  //   <article className="info">
-  //     <h4>Sneaker Company</h4>
-  //     <h2>
-  //       Fall Limited Edition <br /> Sneakers
-  //     </h2>
-  //     <p>
-  //       These low-profile sneakers are your perfect casual wear companion.
-  //       Featuring a durable rubber outer sole, they’ll withstand everything the
-  //       weather can offer.
-  //     </p>
-  //     <div className="price">
-  //       <h3>
-  //         $125.00<span> 50%</span>
-  //       </h3>
-  //       <p>$250</p>
-  //     </div>
-  //     <div className="cart">
-  //       <div className="Add">
-  //         <RemoveRounded onClick={countDecrease} className="btn-add" /> {count}
-  //         <AddRounded onClick={countIncrease} className="btn-add" />
-  //       </div>
-  //     </div>
-  //   </article>
-  // );
+  const countDecrease = () => {
+    if (count === 0) {
+      setCount(0);
+    } else {
+      setCount(count - 1);
+    }
+  };
+
+  return (
+    <div className="productConteyner">
+      <div  className="productImage">
+        <img src={PraductImage}></img>
+      </div>
+      <div className="info">
+        <h2>
+          {PraductId}
+        </h2>
+        <p>
+          {PraductAbout}
+        </p>
+        <div className="price">
+          <h3>
+            {PraductPrice}դր
+          </h3>
+        </div>
+      </div>
+      <div className="cart">
+        <div className="Add">
+          <RemoveRounded onClick={countDecrease} className="btn-add" /> 
+          {count}
+          <AddRounded onClick={countIncrease} className="btn-add" />
+        </div>
+    </div>
+
+      
+    </div>
+  );
 };
 
 export default Info;
+
