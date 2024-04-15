@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom'
-import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import i18n from "./i18n"
 import App from './App'
@@ -10,8 +9,8 @@ import App from './App'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
       <App />
-    </Provider>
+    {/* </Provider> */}
   </BrowserRouter>
 );

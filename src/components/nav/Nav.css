@@ -29,7 +29,7 @@
 @media screen and (max-width: 1500px) {
     .container{
         display: flex;
-        width : 50%;
+        width : 52%;
         justify-content : space-between;
     }
 }

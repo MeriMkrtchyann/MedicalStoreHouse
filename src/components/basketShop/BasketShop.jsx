@@ -4,7 +4,7 @@ import "./BasketShop.css"
 export default function BasketShop(){
     return (
         <div className="basket">
-                <FaCartShopping/>
+            <FaCartShopping/>
         </div>
     )
 }
