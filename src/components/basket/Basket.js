@@ -4,6 +4,7 @@ export default function Basket({basket,openAndCloseModal}){
     return(
         <div className="basketModal">
                 <div className="modalConteyner">
+                    <span>Ձեր զամբյուղը</span>
                     <span onClick={openAndCloseModal} className="closeButton">&times;</span>
                     {basket && 
                         basket.map((product) => {
@@ -13,7 +14,7 @@ export default function Basket({basket,openAndCloseModal}){
                                     <img src={product.PraductImage}/>
                                 </div>
                                 <div className="basketProductName">
-                                    {product.PraductId}
+                                    <p>{product.PraductId}</p>
                                 </div>
                                 <div className="basketProductPrice">
                                     {product.PraductPrice}դր

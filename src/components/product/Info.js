@@ -1,35 +1,17 @@
-import { RemoveRounded } from "@mui/icons-material";
-import { AddRounded } from "@mui/icons-material";
-import React, { useState } from "react";
+import React from "react";
 import "./Info.css"
 import BasketShop from "../basketShop/BasketShop";
+import CountDecInc from "../countDecInc/CountDecInc";
 
 const Info = ({aboutProduct }) => {
-
-  const [count , setCount] = useState(0)
 
   const { 
           PraductAbout, 
           PraductId, 
           PraductImage, 
-          PraductName,
           PraductPrice,
           PraductQuantity
   } = aboutProduct
-
-  const countIncrease = () => {
-      if (count < PraductQuantity){
-        setCount(count + 1)
-      }
-  };
-
-  const countDecrease = () => {
-    if (count === 0) {
-      setCount(0);
-    } else {
-      setCount(count - 1);
-    }
-  };
 
   return (
     <div className="productConteyner">
@@ -49,13 +31,9 @@ const Info = ({aboutProduct }) => {
                 {PraductPrice}դր
               </h2>
             </div>
-            <div className="add">
-              <RemoveRounded onClick={countDecrease} className="btn-add" /> 
-              <p>{count}</p>
-              <AddRounded onClick={countIncrease} className="btn-add" />
-            </div>
+            <CountDecInc PraductQuantity={PraductQuantity}/>
             <div className="basketAdd">
-            <BasketShop/>
+              <BasketShop/>
             </div>
         </div>
       </div>
