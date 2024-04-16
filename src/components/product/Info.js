@@ -1,6 +1,8 @@
 import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
 import React, { useState } from "react";
+import "./Info.css"
+import BasketShop from "../basketShop/BasketShop";
 
 const Info = ({aboutProduct }) => {
 
@@ -35,27 +37,28 @@ const Info = ({aboutProduct }) => {
         <img src={PraductImage}></img>
       </div>
       <div className="info">
-        <h2>
-          {PraductId}
-        </h2>
-        <p>
-          {PraductAbout}
-        </p>
-        <div className="price">
-          <h3>
-            {PraductPrice}դր
-          </h3>
+          <h2 className="productName">
+            {PraductId}
+          </h2>
+          <p className="praductAbout">
+            {PraductAbout}
+          </p>
+          <div className="cart">
+            <div className="price">
+              <h2>
+                {PraductPrice}դր
+              </h2>
+            </div>
+            <div className="add">
+              <RemoveRounded onClick={countDecrease} className="btn-add" /> 
+              <p>{count}</p>
+              <AddRounded onClick={countIncrease} className="btn-add" />
+            </div>
+            <div className="basketAdd">
+            <BasketShop/>
+            </div>
         </div>
       </div>
-      <div className="cart">
-        <div className="Add">
-          <RemoveRounded onClick={countDecrease} className="btn-add" /> 
-          {count}
-          <AddRounded onClick={countIncrease} className="btn-add" />
-        </div>
-    </div>
-
-      
     </div>
   );
 };
