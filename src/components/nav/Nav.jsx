@@ -9,12 +9,13 @@ import SignOut from "../SignInAndOut/SignOut";
 import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
+import Basket from "../basket/Basket.js";
 
-export default function Nav({activeUser, setActiveUser, setActiveCategory}){
+export default function Nav({activeUser, setActiveUser, setActiveCategory, basket}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
-
+    
     const openAndCloseModal = () => {
         setBasketModal(!basketModal)
     }
@@ -52,14 +53,9 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory}){
                     <SignIn/>
                 }
             </div>  
-            {basketModal && 
-            <div className="basketModal">
-                <div className="modalContent">
-                    <span onClick={openAndCloseModal} className="closeButton">&times;</span>
-                    <p>Здесь может быть </p>
-                </div>
-            </div>
-        }       
+            {basketModal &&
+                <Basket basket={basket} openAndCloseModal={openAndCloseModal}/>
+            }       
         </nav>
     )
 }

@@ -2,13 +2,22 @@ import { useNavigate } from "react-router-dom";
 import { FaCartShopping } from "../icons/Icons"
 import "./Main.css"
 
-export default function Main({allData , setAboutPrductData}){
+export default function Main({allData , setAboutPrductData, setBasket, basket}){
 
     const navigate = useNavigate()
 
     const aboutPrduct = (data) => {
         setAboutPrductData(data)
         navigate("/aboutProduct")
+    }
+
+    const clickBasektButton = (priduct) => {
+        if (basket){
+            setBasket([...basket ,priduct])
+        }else {
+            setBasket([priduct])
+        }
+        
     }
 
     return(
@@ -24,8 +33,8 @@ export default function Main({allData , setAboutPrductData}){
                         <>
                             {Object.keys(data).map((value)=>{
                                 return(
-                                    <div className="product" onClick={() => aboutPrduct(data[value])} >
-                                        <div className="img">
+                                    <div className="product"  >
+                                        <div className="img" onClick={() => aboutPrduct(data[value])}>
                                             <img src={data[value].PraductImage} alt="img" />
                                         </div>
                                         <span>{data[value].PraductId}</span>
@@ -33,7 +42,7 @@ export default function Main({allData , setAboutPrductData}){
                                             <div className="price">
                                                 <span> {data[value].PraductPrice} դր </span>
                                             </div>
-                                           <div className="cartShopping">
+                                           <div className="cartShopping" onClick={() => clickBasektButton(data[value])}>
                                                 <FaCartShopping/>
                                             </div>
                                         </div>

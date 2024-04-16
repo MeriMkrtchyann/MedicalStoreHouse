@@ -1,0 +1,134 @@
+/* .basketModal {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 300px; 
+    height:100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; 
+    padding: 20px;
+    color : black;
+}
+  
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+}
+
+.modalConteyner .basketProductImage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.basketProduct{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    align-align: center;
+    justify-content:center;
+}
+
+.basketProductImage {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.basketProductImage img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+  
+.basketProductName {
+    flex: 1;
+    font-weight: bold;
+    margin-left:10px;
+}
+  
+.basketProductPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color : blue;
+}
+  
+
+  
+
+
+ */
+
+ .basketModal {
+    position: fixed;
+    top: 70px;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 20px;
+    color: black;
+    overflow-y: auto;
+  }
+  
+  .closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+  }
+  
+  .modalConteyner {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .basketProduct {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  
+  .basketProductImage {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .basketProductImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .basketProductName {
+    flex: 1;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .basketProductPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: blue;
+  }
+  

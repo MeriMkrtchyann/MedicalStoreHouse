@@ -6,6 +6,7 @@ import getCategoryData from "../../services/allProducts/AllPraducts";
 export default function HomePage ({activeUser, setActiveUser, setAboutPrductData, setActiveCategory}){
     
     const [allData , setAllData] = useState({});
+    const [basket, setBasket] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -17,8 +18,8 @@ export default function HomePage ({activeUser, setActiveUser, setAboutPrductData
 
     return (
         <>
-            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory}/>
-            <Main allData={allData} setAboutPrductData={setAboutPrductData}/>
+            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket}/>
+            <Main allData={allData} setAboutPrductData={setAboutPrductData} setBasket={setBasket} basket={basket}/>
         </>
     )
 }

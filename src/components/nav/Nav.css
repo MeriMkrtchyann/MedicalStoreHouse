@@ -26,28 +26,6 @@
     justify-content : flex-start;
 }
 
-.basketModal {
-    position: fixed;
-    top: 70px;
-    right: 0;
-    width: 300px; 
-    height:100%;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 999; 
-    padding: 20px;
-}
-
-.closeButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    font-size: 25px;
-    color: black;
-}
-
-
 @media screen and (max-width: 1500px) {
     .container{
         display: flex;
