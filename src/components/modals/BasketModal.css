@@ -1,0 +1,24 @@
+.basketModal {
+    position: fixed;
+    top: 50%; /* Положение модального окна по вертикали (по центру) */
+    left: 0;
+    transform: translateY(-50%); /* Центрирование по вертикали */
+    width: 300px; /* Ширина модального окна */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999; /* Выше других элементов на странице */
+    padding: 20px;
+}
+
+.modalContent {
+    /* Стили для содержимого модального окна, например, цвет фона, отступы и т.д. */
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+}

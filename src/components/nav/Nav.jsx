@@ -13,6 +13,11 @@ import { useState, useEffect } from "react";
 export default function Nav({activeUser, setActiveUser, setActiveCategory}){
 
     const [categories, setCategories] = useState([])
+    const [basketModal, setBasketModal] = useState(false)
+
+    const openAndCloseModal = () => {
+        setBasketModal(!basketModal)
+    }
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -31,7 +36,10 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory}){
             <div className="conteyner-categories-list-user">
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 <LanguageSelector background={"black"}/>
-                <BasketShop/>
+                <div onClick={openAndCloseModal}>
+                    <BasketShop />
+                </div>
+                
                 {activeUser ?
                     <>
                     {console.log(activeUser)}
@@ -43,8 +51,15 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory}){
                 : 
                     <SignIn/>
                 }
-
-            </div>         
+            </div>  
+            {basketModal && 
+            <div className="basketModal">
+                <div className="modalContent">
+                    <span onClick={openAndCloseModal} className="closeButton">&times;</span>
+                    <p>Здесь может быть </p>
+                </div>
+            </div>
+        }       
         </nav>
     )
 }
