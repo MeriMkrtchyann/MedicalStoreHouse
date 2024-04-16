@@ -1,7 +1,12 @@
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
-export default function Basket({basket,openAndCloseModal,sum , setSum}){
+export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum}){
+
+    const bye = () => {
+        setSum(0)
+        setBasket([])
+    }
 
     return(
         <div className="basketModal">
@@ -28,8 +33,8 @@ export default function Basket({basket,openAndCloseModal,sum , setSum}){
                     <div className="allPrice">
                         <p>Ընդհանուր</p>
                         <p>{sum}դր</p>
+                        <div onClick={()=> bye()}> Գնել</div>
                     </div>
-                    
                 </div>
             </div>
     )

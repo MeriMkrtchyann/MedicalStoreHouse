@@ -19,7 +19,7 @@ export default function HomePage ({activeUser, setActiveUser, setAboutPrductData
 
     return (
         <>
-            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} sum={sum} setSum={setSum}/>
+            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>
             <Main allData={allData} setAboutPrductData={setAboutPrductData} setBasket={setBasket} basket={basket} sum={sum} setSum={setSum}/>
         </>
     )
