@@ -31,7 +31,7 @@ const Info = ({aboutProduct }) => {
                 {PraductPrice}դր
               </h2>
             </div>
-            <CountDecInc PraductQuantity={PraductQuantity}/>
+            <CountDecInc PraductQuantity={PraductQuantity} />
             <div className="basketAdd">
               <BasketShop/>
             </div>

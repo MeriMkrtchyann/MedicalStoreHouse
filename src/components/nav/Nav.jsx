@@ -11,7 +11,7 @@ import readCategoresData from "../../services/categories/firebaseGetCategories.j
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
 
-export default function Nav({activeUser, setActiveUser, setActiveCategory, basket}){
+export default function Nav({activeUser, setActiveUser, setActiveCategory, basket, sum, setSum}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
@@ -54,7 +54,7 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
                 }
             </div>  
             {basketModal &&
-                <Basket basket={basket} openAndCloseModal={openAndCloseModal}/>
+                <Basket basket={basket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}/>
             }       
         </nav>
     )

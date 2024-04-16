@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { FaCartShopping } from "../icons/Icons"
 import "./Main.css"
 
-export default function Main({allData , setAboutPrductData, setBasket, basket}){
+export default function Main({allData , setAboutPrductData, setBasket, basket,sum, setSum}){
 
     const navigate = useNavigate()
 
@@ -16,8 +16,9 @@ export default function Main({allData , setAboutPrductData, setBasket, basket}){
             setBasket([...basket ,priduct])
         }else {
             setBasket([priduct])
+            
         }
-        
+        setSum(sum + (+priduct.PraductPrice))
     }
 
     return(

@@ -1,6 +1,8 @@
+import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
-export default function Basket({basket,openAndCloseModal}){
+export default function Basket({basket,openAndCloseModal,sum , setSum}){
+
     return(
         <div className="basketModal">
                 <div className="modalConteyner">
@@ -17,12 +19,17 @@ export default function Basket({basket,openAndCloseModal}){
                                     <p>{product.PraductId}</p>
                                 </div>
                                 <div className="basketProductPrice">
-                                    {product.PraductPrice}դր
+                                    <div className="basketPrice">{product.PraductPrice}դր</div>
+                                    <CountDecInc PraductQuantity={product.PraductQuantity} praductPrice={product.PraductPrice}  sum={sum} setSum={setSum}/>
                                 </div>
                             </div>)
                         })
-                       
                     }
+                    <div className="allPrice">
+                        <p>Ընդհանուր</p>
+                        <p>{sum}դր</p>
+                    </div>
+                    
                 </div>
             </div>
     )

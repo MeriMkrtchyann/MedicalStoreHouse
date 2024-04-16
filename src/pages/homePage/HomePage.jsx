@@ -7,6 +7,7 @@ export default function HomePage ({activeUser, setActiveUser, setAboutPrductData
     
     const [allData , setAllData] = useState({});
     const [basket, setBasket] = useState([]);
+    const [sum , setSum] = useState(0);
 
     useEffect(() => {
         async function fetchData() {
@@ -18,8 +19,8 @@ export default function HomePage ({activeUser, setActiveUser, setAboutPrductData
 
     return (
         <>
-            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket}/>
-            <Main allData={allData} setAboutPrductData={setAboutPrductData} setBasket={setBasket} basket={basket}/>
+            <Nav activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} sum={sum} setSum={setSum}/>
+            <Main allData={allData} setAboutPrductData={setAboutPrductData} setBasket={setBasket} basket={basket} sum={sum} setSum={setSum}/>
         </>
     )
 }
