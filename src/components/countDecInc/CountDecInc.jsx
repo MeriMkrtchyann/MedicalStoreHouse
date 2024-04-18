@@ -3,7 +3,7 @@ import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
 
 
-export default function CountDecInc({PraductQuantity, praductPrice=0, sum, setSum, }){
+export default function CountDecInc({PraductQuantity, praductPrice=0, sum=0, setSum=()=>{}, }){
 
     const [count , setCount] = useState(1)
 

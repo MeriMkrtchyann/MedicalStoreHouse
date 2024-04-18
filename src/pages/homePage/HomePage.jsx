@@ -3,11 +3,9 @@ import Nav from "../../components/nav/Nav"
 import Main from "../../components/main/Main";
 import getCategoryData from "../../services/allProducts/AllPraducts";
 
-export default function HomePage ({activeUser, setActiveUser, setAboutPrductData, setActiveCategory}){
+export default function HomePage ({activeUser, setActiveUser, setAboutPrductData, setActiveCategory, basket, setBasket, setSum, sum}){
     
     const [allData , setAllData] = useState({});
-    const [basket, setBasket] = useState([]);
-    const [sum , setSum] = useState(0);
 
     useEffect(() => {
         async function fetchData() {

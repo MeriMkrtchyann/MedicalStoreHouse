@@ -11,17 +11,19 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
 
   const [activeUser, setActiveUser] = useState(null);
-  const [aboutProduct ,setAboutPrductData] = useState(null);
+  const [product ,setProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
   const [admin , setAdmin] = useState(null);
+  const [basket, setBasket] = useState([]);
+  const [sum , setSum] = useState(0);
 
   return (
     <>
       <Routes>
-          <Route path="/" element={<HomePage activeUser={activeUser} setActiveUser={setActiveUser} setAboutPrductData={setAboutPrductData} setActiveCategory={setActiveCategory}/>} />
+          <Route path="/" element={<HomePage activeUser={activeUser} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
           <Route path="/signIn" element={<LoginPage setActiveUser={setActiveUser} setAdmin={setAdmin} />} />
           <Route path="/signUp" element={<SignUpPage/>}/>
-          <Route path="/aboutProduct" element={aboutProduct ? <Product aboutProduct={aboutProduct} activeUser={activeUser} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory}/> : <NotFoundPage/>}/>
+          <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
           <Route path="/admin" element={admin ? <AdminPage setAdmin={setAdmin}/> : <NotFoundPage/>}/>
       </Routes>

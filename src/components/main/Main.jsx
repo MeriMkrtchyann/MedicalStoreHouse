@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { FaCartShopping } from "../icons/Icons"
+import basektButton from "../../services/basket/basektButton.js"
 import "./Main.css"
 
 export default function Main({allData , setAboutPrductData, setBasket, basket,sum, setSum}){
@@ -11,15 +12,8 @@ export default function Main({allData , setAboutPrductData, setBasket, basket,su
         navigate("/aboutProduct")
     }
 
-    const clickBasektButton = (priduct) => {
-        if (basket){
-            setBasket([...basket ,priduct])
-        }else {
-            setBasket([priduct])
-            
-        }
-        setSum(sum + (+priduct.PraductPrice))
-        
+    const clickBasektButton = (product) => {
+        basektButton(product,  setBasket, basket,sum, setSum)
     }
 
     return(

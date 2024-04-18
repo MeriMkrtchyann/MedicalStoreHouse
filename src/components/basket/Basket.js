@@ -1,7 +1,7 @@
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
-export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum,  setBasketQuantityProducts, basketQuantityProducts}){
+export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum}){
 
     const bye = () => {
         setSum(0)
@@ -15,6 +15,7 @@ export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum,
                     <span onClick={openAndCloseModal} className="closeButton">&times;</span>
                     {basket && 
                         basket.map((product) => {
+                            console.log(product)
                            return( 
                             <div className="basketProduct">
                                 <div className="basketProductImage">
