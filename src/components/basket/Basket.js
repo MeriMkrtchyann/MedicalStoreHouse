@@ -12,6 +12,7 @@ export default function Basket({basket, setBasket,sum,setSum}){
     const deleteAll = () => {
         setSum(0)
         setBasket([])
+        basket.map((product) => {product.inBasket = 0})
     }
 
     const deleteProduct = (product) => {
