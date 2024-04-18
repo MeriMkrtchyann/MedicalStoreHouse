@@ -1,23 +1,27 @@
+import { useState } from "react"
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
-export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum}){
-
+export default function Basket({basket, setBasket,sum,setSum}){
+    
     const bye = () => {
         setSum(0)
         setBasket([])
+    }
+
+    const deleteProduct = (product) => {
+        setBasket(basket.filter(value=> value!== product))
+        setSum(sum - (+product.PraductPrice) * (+product.inBasket) )
     }
 
     return(
         <div className="basketModal">
                 <div className="modalConteyner">
                     <span>Ձեր զամբյուղը</span>
-                    <span onClick={openAndCloseModal} className="closeButton">&times;</span>
                     {basket && 
                         basket.map((product) => {
-                            console.log(product)
                            return( 
-                            <div className="basketProduct">
+                            <div key={product} className="basketProduct">
                                 <div className="basketProductImage">
                                     <img src={product.PraductImage}/>
                                 </div>
@@ -25,8 +29,13 @@ export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum}
                                     <p>{product.PraductId}</p>
                                 </div>
                                 <div className="basketProductPrice">
+                                    <div className="deleteButton" onClick={() => deleteProduct(product)}>
+                                        <spanc lassName="deleteButton">&times;</spanc>
+                                    </div>
+                                    <div>
+                                        <CountDecInc  product={product} PraductQuantity={product.PraductQuantity} praductPrice={product.PraductPrice}  sum={sum} setSum={setSum}/>
+                                    </div>
                                     <div className="basketPrice">{product.PraductPrice}դր</div>
-                                    <CountDecInc PraductQuantity={product.PraductQuantity} praductPrice={product.PraductPrice}  sum={sum} setSum={setSum}/>
                                 </div>
                             </div>)
                         })

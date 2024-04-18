@@ -69,3 +69,10 @@
     margin-top:10px;
   }
 
+  .deleteButton{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size:25px;
+    color: #ff5722;
+  }
