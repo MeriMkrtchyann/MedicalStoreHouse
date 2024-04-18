@@ -19,6 +19,7 @@ export default function Main({allData , setAboutPrductData, setBasket, basket,su
             
         }
         setSum(sum + (+priduct.PraductPrice))
+        
     }
 
     return(

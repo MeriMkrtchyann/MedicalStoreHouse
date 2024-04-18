@@ -1,7 +1,7 @@
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
-export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum}){
+export default function Basket({basket, setBasket, openAndCloseModal,sum,setSum,  setBasketQuantityProducts, basketQuantityProducts}){
 
     const bye = () => {
         setSum(0)

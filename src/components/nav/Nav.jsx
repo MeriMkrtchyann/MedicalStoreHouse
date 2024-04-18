@@ -15,6 +15,7 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
+    const [basketQuantityProducts, setBasketQuantityProducts] = useState(0)
     
     const openAndCloseModal = () => {
         setBasketModal(!basketModal)
@@ -24,9 +25,12 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
         const fetchCategories = async () => {
             setCategories(await readCategoresData());
         };
-    
         fetchCategories();
     }, []);
+
+    useEffect(() => {
+        setBasketQuantityProducts(basket.length)
+    }, [basket]);
 
     return(
         <nav className='nav'>
@@ -37,13 +41,14 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
             <div className="conteyner-categories-list-user">
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 <LanguageSelector background={"black"}/>
-                <div onClick={openAndCloseModal}>
+                <div className="basketAndQuantityContainer" onClick={openAndCloseModal}>
                     <BasketShop />
+                    <span className={basketQuantityProducts ? "quantity" : "quantityZero"}>
+                        {basketQuantityProducts}
+                    </span>
                 </div>
-                
                 {activeUser ?
                     <>
-                    {console.log(activeUser)}
                         <SignOut setActiveUser={setActiveUser} />
                         {Object.keys(activeUser).map((id) =>
                          <UserAvatar key={id} userName={activeUser[id].username} />
@@ -54,7 +59,7 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
                 }
             </div>  
             {basketModal &&
-                <Basket basket={basket} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}/>
+                <Basket basket={basket} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
             }       
         </nav>
     )
