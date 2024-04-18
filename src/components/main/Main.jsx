@@ -3,7 +3,7 @@ import { FaCartShopping } from "../icons/Icons"
 import basektButton from "../../services/basket/basektButton.js"
 import "./Main.css"
 
-export default function Main({allData , setAboutPrductData, setBasket, basket,sum, setSum}){
+export default function Main({allData ,activeUser, setAboutPrductData, setBasket, basket,sum, setSum}){
 
     const navigate = useNavigate()
 
@@ -13,7 +13,8 @@ export default function Main({allData , setAboutPrductData, setBasket, basket,su
     }
 
     const clickBasektButton = (product) => {
-        basektButton(product,  setBasket, basket,sum, setSum)
+        activeUser ? basektButton(product,  setBasket, basket,sum, setSum) : navigate("/signIn")
+        
     }
 
     return(

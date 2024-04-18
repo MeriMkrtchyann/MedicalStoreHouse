@@ -38,15 +38,10 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
                 <PyramidMenu categories={categories} setActiveCategory={setActiveCategory}/>
                 <Logo/>  
             </div>
+            
             <div className="conteyner-categories-list-user">
+            
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
-                <LanguageSelector background={"black"}/>
-                <div className="basketAndQuantityContainer" onClick={openAndCloseModal}>
-                    <BasketShop />
-                    <span className={basketQuantityProducts ? "quantity" : "quantityZero"}>
-                        {basketQuantityProducts}
-                    </span>
-                </div>
                 {activeUser ?
                     <>
                         <SignOut setActiveUser={setActiveUser} />
@@ -57,10 +52,18 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
                 : 
                     <SignIn/>
                 }
+                <div className="basketAndQuantityContainer" onClick={openAndCloseModal}>
+                    <BasketShop />
+                    <span className={basketQuantityProducts ? "quantity" : "quantityZero"}>
+                        {basketQuantityProducts}
+                    </span>
+                </div>
+                <LanguageSelector background={"black"}/>
             </div>  
             {basketModal &&
                 <Basket basket={basket} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
-            }       
+            }   
+                
         </nav>
     )
 }
