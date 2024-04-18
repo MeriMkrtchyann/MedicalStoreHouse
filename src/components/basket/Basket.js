@@ -9,6 +9,11 @@ export default function Basket({basket, setBasket,sum,setSum}){
         setBasket([])
     }
 
+    const deleteAll = () => {
+        setSum(0)
+        setBasket([])
+    }
+
     const deleteProduct = (product) => {
         setBasket(basket.filter(value=> value!== product))
         setSum(sum - (+product.PraductPrice) * (+product.inBasket) )
@@ -17,7 +22,10 @@ export default function Basket({basket, setBasket,sum,setSum}){
     return(
         <div className="basketModal">
                 <div className="modalConteyner">
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
                     <span>Ձեր զամբյուղը</span>
+                    <span onClick={()=> deleteAll()} style={{cursor: "pointer"}}>Ջնջել բոլորը</span>
+                </div>
                     {basket && 
                         basket.map((product) => {
                            return( 
@@ -43,7 +51,7 @@ export default function Basket({basket, setBasket,sum,setSum}){
                     <div className="allPrice">
                         <p>Ընդհանուր</p>
                         <p>{sum}դր</p>
-                        <div onClick={()=> bye()}> Գնել</div>
+                        <div onClick={()=> bye()} style={{cursor: "pointer"}}> Գնել</div>
                     </div>
                 </div>
             </div>
