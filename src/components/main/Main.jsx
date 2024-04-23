@@ -14,7 +14,6 @@ export default function Main({allData ,activeUser, setAboutPrductData, setBasket
 
     const clickBasektButton = (product) => {
         activeUser ? basektButton(product,  setBasket, basket,sum, setSum) : navigate("/signIn")
-        
     }
 
     return(
@@ -51,7 +50,6 @@ export default function Main({allData ,activeUser, setAboutPrductData, setBasket
                 })}
                 </div>
             </div>
-            
         </div>
         
     )    
