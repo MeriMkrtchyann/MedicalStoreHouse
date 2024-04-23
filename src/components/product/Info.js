@@ -1,10 +1,12 @@
 import React from "react";
-import "./Info.css"
+import { useNavigate } from "react-router-dom";
 import BasketShop from "../basketShop/BasketShop";
 import basektButton from "../../services/basket/basektButton";
+import "./Info.css"
 
-const Info = ({product, setBasket, basket, sum, setSum }) => {
+const Info = ({product,activeUser, setBasket, basket, sum, setSum }) => {
 
+  const navigate = useNavigate()
   const { 
           PraductAbout, 
           PraductId, 
@@ -13,7 +15,7 @@ const Info = ({product, setBasket, basket, sum, setSum }) => {
   } = product
 
   const clickBasektButton = (product) => {
-    basektButton(product,  setBasket, basket,sum, setSum)
+    activeUser ? basektButton(product,  setBasket, basket,sum, setSum) : navigate("/signIn")
 }
 
 

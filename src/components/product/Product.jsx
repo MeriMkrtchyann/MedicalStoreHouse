@@ -12,6 +12,7 @@ export default function Product({product, activeUser, setActiveUser, setActiveCa
             <div className="Main-hero">
                 <section className="flexHero">
                 <Info
+                    activeUser={activeUser}
                     count={count}
                     product={product}
                     setBasket={setBasket} 

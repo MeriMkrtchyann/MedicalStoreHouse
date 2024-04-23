@@ -5,7 +5,7 @@ export default function Categories({categories, setActiveCategory}){
 
 
     const handleMouseOver = (primary) => setActiveCategory(primary);
-    const handleMouseOut = () => setActiveCategory(null);
+    // const handleMouseOut = () => setActiveCategory(null);
 
     return(
         <div className="categories">
@@ -16,9 +16,9 @@ export default function Categories({categories, setActiveCategory}){
                         key={innerObject.categoryId}
                         className="category"
                         onMouseOver={() => handleMouseOver(innerObject.categoryName)} 
-                        onMouseOut={handleMouseOut}
+                        // onMouseOut={handleMouseOut}
                     >
-                        <Link to = {"/"+innerObject.categoryName }>{innerObject.categoryName}</Link>
+                        <Link to = {"/"}>{innerObject.categoryName}</Link>
                     </div>
                     )
                 })}
