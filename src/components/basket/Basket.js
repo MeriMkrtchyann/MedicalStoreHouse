@@ -1,4 +1,3 @@
-import { useState } from "react"
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 
@@ -18,6 +17,7 @@ export default function Basket({basket, setBasket,sum,setSum}){
     const deleteProduct = (product) => {
         setBasket(basket.filter(value=> value!== product))
         setSum(sum - (+product.PraductPrice) * (+product.inBasket) )
+        product.inBasket = 0
     }
 
     return(
@@ -42,7 +42,7 @@ export default function Basket({basket, setBasket,sum,setSum}){
                                         <spanc lassName="deleteButton">&times;</spanc>
                                     </div>
                                     <div>
-                                        <CountDecInc  product={product} PraductQuantity={product.PraductQuantity} praductPrice={product.PraductPrice}  sum={sum} setSum={setSum}/>
+                                        <CountDecInc product={product} PraductQuantity={product.PraductQuantity} praductPrice={product.PraductPrice}  sum={sum} setSum={setSum}/>
                                     </div>
                                     <div className="basketPrice">{product.PraductPrice}դր</div>
                                 </div>

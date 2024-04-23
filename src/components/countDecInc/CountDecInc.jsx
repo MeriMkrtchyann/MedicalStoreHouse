@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
 
-export default function CountDecInc({product,PraductQuantity, praductPrice=0, sum=0, setSum=()=>{}, }){
+export default function CountDecInc({product,PraductQuantity, praductPrice=0, sum=0, setSum=()=>{}}){
 
-    const [count , setCount] = useState(1)
+    const [count , setCount] = useState(product.inBasket)
+
+    useEffect(()=>{
+        setCount(product.inBasket)
+    },[product])
 
     const countIncrease = () => {
         if (count < PraductQuantity){
@@ -23,7 +27,6 @@ export default function CountDecInc({product,PraductQuantity, praductPrice=0, su
             setSum(sum - praductPrice)
             product.inBasket = count - 1
         }
-        
     };
 
     return(

@@ -38,15 +38,13 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
                 <PyramidMenu categories={categories} setActiveCategory={setActiveCategory}/>
                 <Logo/>  
             </div>
-            
             <div className="conteyner-categories-list-user">
-            
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 {activeUser ?
                     <>
                         <SignOut setActiveUser={setActiveUser} />
                         {Object.keys(activeUser).map((id) =>
-                         <UserAvatar key={id} userName={activeUser[id].username} />
+                          <UserAvatar key={id} userName={activeUser[id].username} />
                         )}
                     </>
                 : 
@@ -62,8 +60,7 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
             </div>  
             {basketModal &&
                 <Basket basket={basket} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
-            }   
-                
+            }             
         </nav>
     )
 }

@@ -1,10 +1,10 @@
 
-export default function basektButton (product,  setBasket, basket,sum, setSum ){
+export default function basektButton (product,  setBasket, basket, sum, setSum ){
+    product.inBasket = 1
     if (basket){
         setBasket([...basket ,product])
     }else {
         setBasket([product])
     }
-    product.inBasket = 1
-    setSum(sum + (+product.PraductPrice))
+    setSum(sum + (+product.PraductPrice * product.inBasket))
 }
