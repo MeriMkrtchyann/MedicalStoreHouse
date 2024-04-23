@@ -14,8 +14,8 @@ export default function CountDecInc({product,PraductQuantity, praductPrice=0, su
         if (count < PraductQuantity){
             setCount(count + 1)
             setSum(sum + +praductPrice)
+            product.inBasket = count + 1
         }
-        product.inBasket = count + 1
     };
 
     const countDecrease = () => {
