@@ -3,9 +3,7 @@ import "./Categories.css"
 
 export default function Categories({categories, setActiveCategory}){
 
-
-    const handleMouseOver = (primary) => setActiveCategory(primary);
-    // const handleMouseOut = () => setActiveCategory(null);
+    const handleOnClick = (category) => setActiveCategory(category);
 
     return(
         <div className="categories">
@@ -15,8 +13,7 @@ export default function Categories({categories, setActiveCategory}){
                     <div    
                         key={innerObject.categoryId}
                         className="category"
-                        onMouseOver={() => handleMouseOver(innerObject.categoryName)} 
-                        // onMouseOut={handleMouseOut}
+                        onClick={() => handleOnClick(innerObject.categoryName)} 
                     >
                         <Link to = {"/"}>{innerObject.categoryName}</Link>
                     </div>

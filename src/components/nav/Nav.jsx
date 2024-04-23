@@ -36,7 +36,7 @@ export default function Nav({activeUser, setActiveUser, setActiveCategory, baske
         <nav className='nav'>
             <div className='container'>
                 <PyramidMenu categories={categories} setActiveCategory={setActiveCategory}/>
-                <Logo/>  
+                <Logo setActiveCategory={setActiveCategory}/>  
             </div>
             <div className="conteyner-categories-list-user">
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
