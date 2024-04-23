@@ -39,8 +39,7 @@ const AppBar = styled(MuiAppBar, {
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  padding: theme.spacing(0, 5),
-  ...theme.mixins.toolbar,
+  height:'70px',
   justifyContent: 'flex-end',
 }));
 
@@ -49,6 +48,7 @@ const StyledDrawer = styled(Drawer)({
     width: drawerWidth, 
     boxSizing: 'border-box',
   },
+  backgroundColor : "red"
 });
 
 
@@ -71,7 +71,7 @@ export default function PersistentDrawerLeft({categories,setActiveCategory}) {
   return (
     <Box sx={{ display: 'flex' }}> 
       <CssBaseline />
-      <AppBar open={open}>
+      <AppBar open={open} >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -86,17 +86,16 @@ export default function PersistentDrawerLeft({categories,setActiveCategory}) {
       <StyledDrawer
         variant="persistent"
         anchor="left"
-        open={open}
+        open={open}       
       >
         <DrawerHeader 
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + "img/loginName.webp"})`,
+            backgroundImage: `url(${process.env.PUBLIC_URL + "img/medicalName.png"})`,
             width: '100%',
             backgroundSize: 'cover',
-            padding : "5px",
           }}
         >
-          <IconButton onClick={handleDrawerOpenAndClose}>
+          <IconButton onClick={handleDrawerOpenAndClose} style={{color: 'white'}}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
