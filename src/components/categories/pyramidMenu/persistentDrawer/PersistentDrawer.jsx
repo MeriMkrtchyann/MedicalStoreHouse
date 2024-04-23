@@ -52,7 +52,9 @@ const StyledDrawer = styled(Drawer)({
 });
 
 
-export default function PersistentDrawerLeft(categories) {
+export default function PersistentDrawerLeft({categories,setActiveCategory}) {
+
+  console.log("categories" , categories)
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [selectedCategory, setSelectedCategory] = React.useState(null);
@@ -63,6 +65,7 @@ export default function PersistentDrawerLeft(categories) {
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(selectedCategory === category ? null : category);
+    setActiveCategory(category)
   };
 
   return (
@@ -103,25 +106,18 @@ export default function PersistentDrawerLeft(categories) {
           {categories &&
             Object.keys(categories).map((key) => {
               const innerObject = categories[key];
-              return (
-                <React.Fragment key={innerObject.categoryId}>
-                  {Object.keys(innerObject).map((subKey) => {
-                    return (
-                      <React.Fragment key={innerObject[subKey].categoryId}  style={{paddingTop:"0px"}}>
-                        <ListItem key={innerObject[subKey].categoryId} disablePadding>
-                          <ListItemButton onClick={() => handleCategoryClick(innerObject[subKey].categoryName)}>
-                            <ListItemText primary={innerObject[subKey].categoryName} />  
-                          </ListItemButton>
-                        </ListItem>
-                        <Divider />
-                      </React.Fragment>
-                    );
-                  })}
-                </React.Fragment>
-              );
+                return (
+                  <React.Fragment key={innerObject.categoryName}>
+                    <ListItem key={innerObject.categoryName} disablePadding style={{ paddingTop: "0px" }}>
+                        <ListItemButton onClick={() => handleCategoryClick(innerObject.categoryName)}>
+                          <ListItemText primary={innerObject.categoryName} />  
+                        </ListItemButton>
+                    </ListItem>
+                  <Divider />
+                  </React.Fragment>
+                );
             })}
         </List>
-
       </StyledDrawer>
     </Box>
   );
