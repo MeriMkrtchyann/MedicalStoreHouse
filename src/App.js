@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/notFoundPage/NotFoundPage"
 import {SignUpPage} from "./pages/signUpPage/SignUpPage"
 import Product from "./components/product/Product"
 import { Route, Routes } from 'react-router-dom'
+import updateUserData from "./services/users/firebaseUpdate";
 
 function App() {
 
@@ -27,6 +28,17 @@ function App() {
       setAdmin(JSON.parse(storedAdmin));
     }
   }, []);
+
+  useEffect(() => {
+    async function updateBasket () {
+      if (activeUser) {
+        await updateUserData(activeUser, { basket: basket }, () => {
+          console.log('Data updated successfully!');
+        });
+       }
+    }
+    updateBasket()
+  }, [activeUser, basket]);
 
   return (
     <>

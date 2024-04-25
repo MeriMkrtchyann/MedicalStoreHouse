@@ -16,7 +16,7 @@ export default async function writeUserData(aboutUser) {
             addres : aboutUser.aboutUserAddres.value,
             password : sha256(aboutUser.aboutUserPassword.value),
             role : "user",
-            isActiv : true,
+            basket : {},
         });
     }catch(e){
         throw new Error("")

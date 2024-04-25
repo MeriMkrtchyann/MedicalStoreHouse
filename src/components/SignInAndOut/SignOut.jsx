@@ -2,7 +2,7 @@ import {Link} from "react-router-dom"
 import {LogOut} from "../icons/Icons"
 import "./SignIn.css"
 
-export default function SignOut({setActiveUser, setAdmin }){
+export default function SignOut({setActiveUser, setAdmin}){
     
     const clickOutUser = () => {
         setActiveUser(null)

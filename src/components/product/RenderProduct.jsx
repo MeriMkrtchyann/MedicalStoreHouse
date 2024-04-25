@@ -10,7 +10,7 @@ export default function RenderProducts ({products, activeUser, setAboutPrductDat
     };
 
     const clickBasketButton = (product) => {
-        activeUser ? basektButton(product, setBasket, basket, sum, setSum) : navigate("/signIn");
+        activeUser ? basektButton(product, setBasket, basket, sum, setSum, activeUser) : navigate("/signIn");
     };
 
     return Object.keys(products).map((productValue) => {
