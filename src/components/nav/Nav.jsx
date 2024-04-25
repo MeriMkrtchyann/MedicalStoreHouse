@@ -11,7 +11,7 @@ import readCategoresData from "../../services/categories/firebaseGetCategories.j
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
 
-export default function Nav({activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
+export default function Nav({ activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)

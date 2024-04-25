@@ -16,6 +16,7 @@ export default function AdminNav({drawerWidth,setAdmin}){
 
     const onClickLogOut = () => {
       setAdmin(null)
+      localStorage.removeItem("activeAdmin");
       navigate("/signIn")
     }
     return(

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AdminPage from "./pages/adminPage/AdminPage";
 import HomePage from "./pages/homePage/HomePage";
 import LoginPage from "./pages/loginPage/LoginPage";
@@ -17,12 +17,23 @@ function App() {
   const [basket, setBasket] = useState([]);
   const [sum , setSum] = useState(0);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("activeUser");
+    const storedAdmin = localStorage.getItem("activeAdmin");
+    if (storedUser) {
+      setActiveUser(JSON.parse(storedUser));
+    }
+    if (storedAdmin) {
+      setAdmin(JSON.parse(storedAdmin));
+    }
+  }, []);
+
   return (
     <>
       <Routes>
-          <Route path="/" element={<HomePage activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
-          <Route path="/signIn" element={<LoginPage setActiveUser={setActiveUser} setAdmin={setAdmin} />} />
-          <Route path="/signUp" element={<SignUpPage/>}/>
+          <Route path="/" element={<HomePage admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
+          <Route path="/signIn" element={<LoginPage setActiveUser={setActiveUser} setAdmin={setAdmin} activeUser={activeUser} admin={admin}/>} />
+          <Route path="/signUp" element={<SignUpPage activeUser={activeUser}/>}/>
           <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
           <Route path="/admin" element={admin ? <AdminPage setAdmin={setAdmin}/> : <NotFoundPage/>}/>
