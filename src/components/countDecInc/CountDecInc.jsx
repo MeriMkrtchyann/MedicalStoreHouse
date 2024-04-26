@@ -1,20 +1,34 @@
 import { useEffect, useState } from "react";
 import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
+import updateUserData from "../../services/users/firebaseUpdate";
 
-export default function CountDecInc({product,PraductQuantity, praductPrice=0, sum=0, setSum=()=>{}}){
+export default function CountDecInc({activeUser,basket, product, praductQuantity, praductPrice=0, sum=0, setSum=()=>{}}){
 
     const [count , setCount] = useState(product.inBasket)
 
     useEffect(()=>{
         setCount(product.inBasket)
     },[product])
+    console.log(product)
+
+    useEffect(() => {
+        async function updateProductCount() {
+          if (activeUser) {
+            basket[product.PraductName].inBasket = count
+            await updateUserData(activeUser, basket , () => {
+              console.log('Data updated successfully!!!');
+            });
+           }
+        }
+        updateProductCount()
+      }, [count]);
 
     const countIncrease = () => {
-        if (count < PraductQuantity){
+        if (count < praductQuantity){
             setCount(count + 1)
             setSum(sum + +praductPrice)
-            product.inBasket = count + 1
+            console.log(product.inBasket)
         }
     };
 
@@ -25,14 +39,13 @@ export default function CountDecInc({product,PraductQuantity, praductPrice=0, su
         } else {
             setCount(count - 1);
             setSum(sum - praductPrice)
-            product.inBasket = count - 1
         }
     };
 
     return(
         <div className="add">
               <RemoveRounded onClick={countDecrease} className="btn-add" /> 
-              <p>{product.inBasket}</p>
+              <p>{count}</p>
               <AddRounded onClick={countIncrease} className="btn-add" />
         </div>
     )

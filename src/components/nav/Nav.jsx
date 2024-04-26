@@ -59,7 +59,7 @@ export default function Nav({ activeUser, setActiveUser, setActiveCategory, bask
                 <LanguageSelector background={"black"}/>
             </div>  
             {basketModal &&
-                <Basket basket={basket} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
+                <Basket basket={basket} activeUser={activeUser} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
             }             
         </nav>
     )
