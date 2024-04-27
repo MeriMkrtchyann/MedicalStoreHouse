@@ -21,16 +21,19 @@ function App() {
   useEffect(() => {
     const storedUser = localStorage.getItem("activeUser");
     const storedAdmin = localStorage.getItem("activeAdmin");
+    const storedBasket = localStorage.getItem("basket");
     if (storedUser) {
       const user = JSON.parse(storedUser)
       setActiveUser(user);
+      setBasket(JSON.parse(storedBasket))
+      console.log(JSON.parse(storedBasket))
       // const myBasket = Object.keys(user).map((value) => user[value].basket)
       // setBasket(myBasket[0])
     }
     if (storedAdmin) {
       setAdmin(JSON.parse(storedAdmin));
     }
-  });
+  },[]);
 
   return (
     <>
