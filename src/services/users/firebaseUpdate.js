@@ -7,7 +7,7 @@ export default async function updateUserData(activUser, updates={}, callback) {
     Object.keys(activUser).map((id)=> {
         userId = activUser[id].userId
     })
-    const userRef = ref(db, `users/${userId}`); 
+    const userRef = ref(db, `users/${userId}/basket`); 
 
     update(userRef, updates)
     .then(() => {

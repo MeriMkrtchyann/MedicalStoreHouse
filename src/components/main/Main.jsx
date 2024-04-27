@@ -2,6 +2,7 @@ import "./Main.css";
 import RenderProduct from "../product/RenderProduct.jsx";
 
 export default function Main({ allData, activeCategory, activeUser, setAboutPrductData, setBasket, basket, sum, setSum }) {
+
     return (
         <div className="main">
             <div className="mainContainer">

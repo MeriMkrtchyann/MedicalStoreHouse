@@ -7,8 +7,7 @@ import readUserData from "../../services/users/firebaseGet"
 import { useTranslation } from 'react-i18next';
 import readAdminData from '../../services/admins/firebaseGet';
 
-export default function LoginPage({ setActiveUser, setAdmin }) {
-  const [email, setEmail] = React.useState('');
+export default function LoginPage({ setActiveUser, setBasket, setAdmin, email, setEmail }) {
   const [password, setPassword] = React.useState('');
   const [color, setColor] = React.useState('white');
   const [errorText, setErrorText] = React.useState("errorText");
@@ -19,9 +18,8 @@ export default function LoginPage({ setActiveUser, setAdmin }) {
     event.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
       const isAdmin = await readAdminData(email);
-      console.log(isAdmin);
+      setEmail(email)
       const user = userCredential.user;
       if (isAdmin) {
         setAdmin(isAdmin);
@@ -31,6 +29,8 @@ export default function LoginPage({ setActiveUser, setAdmin }) {
       } else if (user.emailVerified) {
         const activeUser = await readUserData(email);
         setActiveUser(activeUser);
+        let updateUserBasket =Object.keys(activeUser).map((value)=> activeUser[value].basket)
+        setBasket(updateUserBasket[0])
         localStorage.setItem("activeUser", JSON.stringify(activeUser));
         navigate("/");
       } else {

@@ -3,17 +3,8 @@ import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 import updateUserData from "../../services/users/firebaseUpdate";
 
-export default function Basket({basket, activeUser, setBasket, sum, setSum}){
+export default function Basket({email, basket, activeUser, setBasket, sum, setSum}){
 
-    useEffect(() => {
-        async function updateBasket () {
-            await updateUserData(activeUser, { basket: basket }, () => {
-              console.log('Data updated successfully!');
-            });
-        }
-        updateBasket()
-      });
-    
     const bye = () => {
         setSum(0)
         setBasket({})
@@ -54,7 +45,7 @@ export default function Basket({basket, activeUser, setBasket, sum, setSum}){
                                         <spanc lassName="deleteButton">&times;</spanc>
                                     </div> */}
                                     <div>
-                                        <CountDecInc basket={basket}  activeUser={activeUser} product={aboutProduct} praductQuantity={aboutProduct.PraductQuantity} praductPrice={aboutProduct.PraductPrice}  sum={sum} setSum={setSum}/>
+                                        <CountDecInc setBasket={setBasket} email={email} basket={basket}  activeUser={activeUser} product={aboutProduct} praductQuantity={aboutProduct.PraductQuantity} praductPrice={aboutProduct.PraductPrice}  sum={sum} setSum={setSum}/>
                                     </div>
                                     <div className="basketPrice">{aboutProduct.PraductPrice}դր</div>
                                 </div>
