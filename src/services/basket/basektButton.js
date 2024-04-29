@@ -4,11 +4,11 @@ export default function basektButton (product,  setBasket, basket, sum, setSum )
         if (basket){
             myBasket =  {
                 ...basket , 
-                [product.PraductName] : product
+                [product.PraductId] : product
             }
             setBasket(myBasket)
         }else {
-            myBasket =  {[product.PraductName] : product}
+            myBasket =  {[product.PraductId] : product}
             setBasket(myBasket)
         }
         localStorage.setItem("basket", JSON.stringify(myBasket));

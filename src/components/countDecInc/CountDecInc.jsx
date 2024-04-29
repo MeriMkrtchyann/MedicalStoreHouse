@@ -15,7 +15,7 @@ export default function CountDecInc({setBasket ,activeUser,basket, product, prad
     useEffect(() => {
         async function updateProductCount() {
             if (activeUser) {
-                basket[product.PraductName].inBasket = count
+                basket[product.PraductId].inBasket = count
                 await updateUserData(activeUser, basket , () => {
                     console.log('Data updated successfully!!!');
                 });

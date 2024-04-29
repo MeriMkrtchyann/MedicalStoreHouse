@@ -1,7 +1,7 @@
-import { useEffect } from "react";
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
-import updateUserData from "../../services/users/firebaseUpdate";
+import removeBasket from "../../services/basket/firebaseDeleteBasket";
+import removeElementFromBasket from "../../services/basket/firebaseRemoveElementFromBasket";
 
 export default function Basket({email, basket, activeUser, setBasket, sum, setSum}){
 
@@ -13,18 +13,21 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
     const deleteAll = async () => {
         setSum(0)
         setBasket({})
-        localStorage.setItem("basket", JSON.stringify({}));
-        await updateUserData(activeUser, basket , () => {
-            console.log('delete all');
-        });
-        // Object.keys(basket).map((product) => {basket[product].inBasket = 0})
+        localStorage.setItem("basket", JSON.stringify(null));
+        await removeBasket(activeUser)
     }
 
-    // const deleteProduct = (product) => {
-    //     setBasket(basket.filter(value=> value!== product))
-    //     setSum(sum - (+product.PraductPrice) * (+product.inBasket) )
-    //     product.inBasket = 0
-    // }
+    const deleteProduct =async (product) => {
+        let filteredBasket = Object.keys(basket)
+            .filter(key => key !== product)
+            .reduce((obj, key) => {
+                obj[key] = basket[key];
+                return obj;
+            }, {});
+        await removeElementFromBasket(activeUser, product)
+        setBasket(filteredBasket)
+        localStorage.setItem("basket", JSON.stringify(filteredBasket));  
+    }
 
     return(
         <div className="basketModal">
@@ -45,9 +48,9 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
                                     <p>{aboutProduct.PraductId}</p>
                                 </div>
                                 <div className="basketProductPrice">
-                                    {/* <div className="deleteButton" onClick={() => deleteProduct(product)}>
+                                    <div className="deleteButton" onClick={() => deleteProduct(product)}>
                                         <spanc lassName="deleteButton">&times;</spanc>
-                                    </div> */}
+                                    </div>
                                     <div>
                                         <CountDecInc setBasket={setBasket} email={email} basket={basket}  activeUser={activeUser} product={aboutProduct} praductQuantity={aboutProduct.PraductQuantity} praductPrice={aboutProduct.PraductPrice}  sum={sum} setSum={setSum}/>
                                     </div>
