@@ -14,11 +14,7 @@ export default function HomePage ({ email, activeUser,activeCategory, setActiveU
         }
         fetchData();
     }, []);
-
-    useEffect(() => {
-       
-    }, [basket]);
-
+    
     return (
         <>
             <Nav email={email}  activeUser={activeUser} setAllData={setAllData} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>

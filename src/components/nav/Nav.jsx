@@ -10,6 +10,7 @@ import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
+import updateUserData from "../../services/users/firebaseUpdate.js";
 
 export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 
@@ -32,6 +33,12 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
         if (basket){
             let basketLength = Object.keys(basket)
             setBasketQuantityProducts(basketLength.length)
+             async function updateUserBasket () {
+                await updateUserData(activeUser, basket , () => {
+                    console.log('Data updated successfully!!!');
+                });
+            }
+            updateUserBasket()
         }
     }, [basket]);
 
@@ -45,7 +52,7 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 {activeUser ?
                     <>
-                        <SignOut setActiveUser={setActiveUser} />
+                        <SignOut setActiveUser={setActiveUser} setBasket={setBasket} />
                         {Object.keys(activeUser).map((id) =>
                           <UserAvatar key={id} userName={activeUser[id].username} />
                         )}
@@ -67,3 +74,4 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
         </nav>
     )
 }
+

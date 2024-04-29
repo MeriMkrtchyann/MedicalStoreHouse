@@ -1,7 +1,12 @@
 import { getDatabase, ref, update } from "firebase/database";
 
-export default async function updateUserData(activUser, updates={}, callback) {
+export default async function updateUserData(activUser, updates, callback) {
     
+    if (!activUser ) {
+        console.error('Invalid active user!');
+        return;
+    }
+
     const db = getDatabase();
     let userId = null
     Object.keys(activUser).map((id)=> {

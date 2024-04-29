@@ -29,9 +29,15 @@ export default function LoginPage({ setActiveUser, setBasket, setAdmin, email, s
       } else if (user.emailVerified) {
         const activeUser = await readUserData(email);
         setActiveUser(activeUser);
-        let updateUserBasket =Object.keys(activeUser).map((value)=> activeUser[value].basket)
-        setBasket(updateUserBasket[0])
         localStorage.setItem("activeUser", JSON.stringify(activeUser));
+        let updateUserBasket =Object.keys(activeUser).map((value)=> activeUser[value].basket)
+        if(updateUserBasket[0]){
+          setBasket(updateUserBasket[0])
+          localStorage.setItem("basket", JSON.stringify(updateUserBasket[0]));
+        }else {
+          setBasket({})
+          localStorage.setItem("basket", JSON.stringify({}));
+        }
         navigate("/");
       } else {
         setErrorText(t('verificationError'));

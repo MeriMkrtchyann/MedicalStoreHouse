@@ -2,12 +2,13 @@ import {Link} from "react-router-dom"
 import {LogOut} from "../icons/Icons"
 import "./SignIn.css"
 
-export default function SignOut({setActiveUser, setAdmin}){
+export default function SignOut({setActiveUser, setBasket}){
     
     const clickOutUser = () => {
         setActiveUser(null)
-        setAdmin(null)
-        localStorage.removeItem("activeUser");
+        setBasket({})
+        localStorage.removeItem("basket")
+        localStorage.removeItem("activeUser")
     }
     return(
         <div className='user' onClick={()=> clickOutUser()}>

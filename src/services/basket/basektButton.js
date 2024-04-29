@@ -1,19 +1,16 @@
-export default function basektButton (product,  setBasket, basket, sum, setSum, activeUser ){
+export default function basektButton (product,  setBasket, basket, sum, setSum ){
     product.inBasket = 1
-    // if(!basket.includes(product)){
+    let myBasket = {}
         if (basket){
-            setBasket(
-                {
-                    ...basket , 
-                    [product.PraductName] : product
-                })
-        }else {
-            setBasket({
+            myBasket =  {
+                ...basket , 
                 [product.PraductName] : product
-            })
+            }
+            setBasket(myBasket)
+        }else {
+            myBasket =  {[product.PraductName] : product}
+            setBasket(myBasket)
         }
-        localStorage.setItem("basket", JSON.stringify(basket));
-        console.log(basket);
+        localStorage.setItem("basket", JSON.stringify(myBasket));
         setSum(sum + (+product.PraductPrice * product.inBasket))
-    // }
 }

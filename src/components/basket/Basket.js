@@ -10,10 +10,14 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
         setBasket({})
     }
 
-    const deleteAll = () => {
+    const deleteAll = async () => {
         setSum(0)
         setBasket({})
-        Object.keys(basket).map((product) => {basket[product].inBasket = 0})
+        localStorage.setItem("basket", JSON.stringify({}));
+        await updateUserData(activeUser, basket , () => {
+            console.log('delete all');
+        });
+        // Object.keys(basket).map((product) => {basket[product].inBasket = 0})
     }
 
     // const deleteProduct = (product) => {
