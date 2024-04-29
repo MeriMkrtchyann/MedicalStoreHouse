@@ -24,9 +24,13 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
                 obj[key] = basket[key];
                 return obj;
             }, {});
+        let newSum = Object.keys(filteredBasket)
+            .map((value) => filteredBasket[value].PraductPrice * filteredBasket[value].inBasket)
+            .reduce((acc, value) => acc + value, 0);
+        setSum(newSum)
         await removeElementFromBasket(activeUser, product)
         setBasket(filteredBasket)
-        localStorage.setItem("basket", JSON.stringify(filteredBasket));  
+        localStorage.setItem("basket", JSON.stringify(filteredBasket));
     }
 
     return(
