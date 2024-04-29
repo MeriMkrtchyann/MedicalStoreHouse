@@ -12,5 +12,7 @@ export default function basektButton (product,  setBasket, basket, sum, setSum )
             setBasket(myBasket)
         }
         localStorage.setItem("basket", JSON.stringify(myBasket));
-        setSum(sum + (+product.PraductPrice * product.inBasket))
+        const newSum = sum + (+product.PraductPrice * product.inBasket)
+        setSum(newSum)
+        localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
 }

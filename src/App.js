@@ -22,6 +22,7 @@ function App() {
     const storedUser = localStorage.getItem("activeUser");
     const storedAdmin = localStorage.getItem("activeAdmin");
     const storedBasket = localStorage.getItem("basket");
+    const storedBaketSum = localStorage.getItem("basketSum");
     if (storedUser) {
       setActiveUser(JSON.parse(storedUser));
     }
@@ -30,6 +31,10 @@ function App() {
     }
     if (storedAdmin) {
       setAdmin(JSON.parse(storedAdmin));
+    }
+    if (storedBaketSum){
+      const sum =JSON.parse(storedBaketSum).sum
+      setSum(sum)
     }
   },[]);
 

@@ -7,11 +7,13 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
 
     const bye = () => {
         setSum(0)
+        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
         setBasket({})
     }
 
     const deleteAll = async () => {
         setSum(0)
+        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
         setBasket({})
         localStorage.setItem("basket", JSON.stringify(null));
         await removeBasket(activeUser)
@@ -28,6 +30,7 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
             .map((value) => filteredBasket[value].PraductPrice * filteredBasket[value].inBasket)
             .reduce((acc, value) => acc + value, 0);
         setSum(newSum)
+        localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
         await removeElementFromBasket(activeUser, product)
         setBasket(filteredBasket)
         localStorage.setItem("basket", JSON.stringify(filteredBasket));

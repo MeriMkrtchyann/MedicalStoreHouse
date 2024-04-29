@@ -31,7 +31,9 @@ export default function CountDecInc({setBasket ,activeUser,basket, product, prad
     const countIncrease = () => {
         if (count < praductQuantity){
             setCount(count + 1)
-            setSum(sum + +praductPrice)
+            const newSum = sum + +praductPrice
+            setSum(newSum)
+            localStorage.setItem("basketSum", JSON.stringify(newSum));
         }
     };
 
@@ -41,7 +43,9 @@ export default function CountDecInc({setBasket ,activeUser,basket, product, prad
         product.inBasket=1
         } else {
             setCount(count - 1);
-            setSum(sum - praductPrice)
+            const newSum = sum - praductPrice
+            setSum(newSum)
+            localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
         }
     };
 
