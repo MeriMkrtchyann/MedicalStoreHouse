@@ -46,7 +46,7 @@ function App() {
           <Route path="/signUp" element={<SignUpPage activeUser={activeUser}/>}/>
           <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
-          <Route path="/admin" element={admin ? <AdminPage setAdmin={setAdmin}/> : <NotFoundPage/>}/>
+          <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
       </Routes>
     </>
   );

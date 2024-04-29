@@ -12,7 +12,7 @@ import "./AdminPage.css"
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft({setAdmin}) {
+export default function PermanentDrawerLeft({ admin, setAdmin }) {
 
   const [openDivMenu , setOpenDivMenu] = useState(null)
   const [categories, setCategories] = useState([])
@@ -34,7 +34,7 @@ export default function PermanentDrawerLeft({setAdmin}) {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AdminNav setAdmin={setAdmin} drawerWidth={drawerWidth}/>
-        <SideDrawerMenu drawerWidth={drawerWidth} setOpenDivMenu={setOpenDivMenu}/>
+        <SideDrawerMenu admin={admin} drawerWidth={drawerWidth} setOpenDivMenu={setOpenDivMenu}/>
         {openDivMenu === "Categories" &&
           <Categories categories={categories} setCategories={setCategories} category={category} setCategory={setCategory}/>
         }

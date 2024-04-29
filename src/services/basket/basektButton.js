@@ -1,6 +1,7 @@
 export default function basektButton (product,  setBasket, basket, sum, setSum ){
     product.inBasket = 1
     let myBasket = {}
+    if (!basket.hasOwnProperty(product.PraductId)){
         if (basket){
             myBasket =  {
                 ...basket , 
@@ -15,4 +16,6 @@ export default function basektButton (product,  setBasket, basket, sum, setSum )
         const newSum = sum + (+product.PraductPrice * product.inBasket)
         setSum(newSum)
         localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
+    }
+       
 }
