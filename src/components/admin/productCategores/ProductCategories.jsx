@@ -38,7 +38,6 @@ export default function ProductCategories({categories, setCategories, category, 
     }
   };
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (category){

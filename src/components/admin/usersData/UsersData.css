@@ -1,0 +1,44 @@
+.usersDataContainer{
+    display: flex;
+    justify-content: center;
+    aline-align: center;
+    transform: translateX(15px);
+    transition: transform 0.3s; 
+}
+
+.tabel {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel th,
+.tabel td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.tabel th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+    text-align: center;
+}
+
+.tabel td {
+    text-align: left;
+    text-align: center;
+}
+
+.tabel tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tabel tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.basket {
+    desplay: inline;
+    text-align: center;
+}

@@ -17,6 +17,7 @@ export default function ProductTypes({ categories }) {
   const [quantity , setQuantity] = useState('');
   const [about , setAbout] = useState('');
   const [image , setImage] = useState('');
+  const [error , setError] = useState(null);
 
   const handleUpdateName = (event) => {
     setName(event.target.value);
@@ -49,19 +50,21 @@ export default function ProductTypes({ categories }) {
         setCategoryId(innerObject.categoryId)
       }
     })
-    if (category && name && categoryId){
+    if (categoryId && id && name && price && quantity && about && image){
       try {
-        await writeTypeData({categoryId, id, name, price, quantity, about, image} );
-        setId("")
-        setCategory("");
-        setName("");
-        setPrice("")
-        setQuantity("");
-        setAbout("")
-        setImage("")
+          await writeTypeData({categoryId, id, name, price, quantity, about, image} );
+          setId("")
+          setCategory("");
+          setName("");
+          setPrice("")
+          setQuantity("");
+          setAbout("")
+          setImage("")
       } catch(e) {
         console.log(e.message);
       }
+    }else {
+      console.log("lracreq bolory");
     }
   };
 
@@ -87,15 +90,16 @@ export default function ProductTypes({ categories }) {
           })}
         </Select>
       </FormControl>
-      <TextField label="ID" id="id" value={id} onChange={handleUpdateId} />
-      <TextField label="Name" id="name" value={name} onChange={handleUpdateName} />
-      <TextField label="Price" id="price" value={price} onChange={handleUpdatePrice} />
-      <TextField label="Quantity" id="quantity" value={quantity} onChange={handleUpdateQuantity} />
-      <TextField label="About" id="about" value={about} onChange={handleUpdateAbout} />
-      <TextField label="Image" id="image" value={image} onChange={handleUpdateImage} />
-      <Button variant="contained" type="submit"> Add </Button>
+        <TextField label="ID" id="id" value={id} onChange={handleUpdateId} />
+        <TextField label="Name" id="name" value={name} onChange={handleUpdateName} />
+        <TextField label="Price" id="price" value={price} onChange={handleUpdatePrice} />
+        <TextField label="Quantity" id="quantity" value={quantity} onChange={handleUpdateQuantity} />
+        <TextField label="About" id="about" value={about} onChange={handleUpdateAbout} />
+        <TextField label="Image" id="image" value={image} onChange={handleUpdateImage} />
+        <Button variant="contained" type="submit"> Add </Button>
     </form>
     </div>
+    
     <div>
     {categories &&
       <table className="tabel">

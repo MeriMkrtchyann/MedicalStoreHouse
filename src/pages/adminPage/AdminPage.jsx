@@ -7,8 +7,9 @@ import AdminNav from '../../components/admin/AdminNav';
 import Categories from '../../components/admin/Categoris';
 import Praducts from '../../components/admin/Types';
 import readCategoresData from "../../services/categories/firebaseGetCategories"
-
+import UsersData from '../../components/admin/usersData/UsersData';
 import "./AdminPage.css"
+
 
 const drawerWidth = 240;
 
@@ -17,6 +18,7 @@ export default function PermanentDrawerLeft({ admin, setAdmin }) {
   const [openDivMenu , setOpenDivMenu] = useState(null)
   const [categories, setCategories] = useState([])
   const [category, setCategory] = useState('')
+  const [usersData, setUsersData] = useState(null)
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,7 +30,7 @@ export default function PermanentDrawerLeft({ admin, setAdmin }) {
       }
     };
     fetchCategories();
-  },[categories, category]);
+  },[ category, categories ]);
 
   return (
       <Box sx={{ display: 'flex' }}>
@@ -40,6 +42,9 @@ export default function PermanentDrawerLeft({ admin, setAdmin }) {
         }
         {openDivMenu === "Products" &&
           <Praducts categories={categories}/>
+        }
+        {openDivMenu === "Users" &&
+          <UsersData usersData={usersData} setUsersData={setUsersData}/>
         }
       </Box>
     );
