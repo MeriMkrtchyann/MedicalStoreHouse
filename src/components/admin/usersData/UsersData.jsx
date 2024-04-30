@@ -14,12 +14,10 @@ export default function UsersData() {
         allUsersData()
     })
 
-    console.log(allUsersData)
-
     return(
         <div className="usersDataContainer" >
             {allUsersData && 
-                <table className="tabel">
+                <table className="usersDataTabel">
                     <thead>
                     <tr>
                         <th>User Id</th>

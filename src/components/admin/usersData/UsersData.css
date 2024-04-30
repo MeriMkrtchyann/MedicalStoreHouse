@@ -2,39 +2,39 @@
     display: flex;
     justify-content: center;
     aline-align: center;
-    transform: translateX(15px);
+    transform:  translateY(90px);
     transition: transform 0.3s; 
 }
 
-.tabel {
-    width: 100%;
+.usersDataTabel {
+    width: 95%;
     border-collapse: collapse;
 }
 
-.tabel th,
-.tabel td {
+.usersDataTabel th,
+.usersDataTabel td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
 
-.tabel th {
+.usersDataTabel th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-align: left;
     text-align: center;
 }
 
-.tabel td {
+.usersDataTabel td {
     text-align: left;
     text-align: center;
 }
 
-.tabel tbody tr:nth-child(even) {
+.usersDataTabel tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.tabel tbody tr:hover {
+.usersDataTabel tbody tr:hover {
     background-color: #f1f1f1;
 }
 
