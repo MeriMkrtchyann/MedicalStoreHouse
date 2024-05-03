@@ -23,7 +23,7 @@ export default function UsersData() {
                         <th>User Id</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Basket</th>
+                        <th>In Basket</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@ export default function UsersData() {
                             <td>{userData.userId}</td>
                             <td>{userData.firstName}</td>
                             <td>{userData.lastName}</td>
-                            <td className="basket">
+                            <td className="basketTabel">
                                 {Object.keys(userData.basket).map((product) =>{
                                     return(
                                         <>

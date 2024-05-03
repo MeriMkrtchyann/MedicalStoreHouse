@@ -2,13 +2,18 @@ import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
 import removeBasket from "../../services/basket/firebaseDeleteBasket";
 import removeElementFromBasket from "../../services/basket/firebaseRemoveElementFromBasket";
+import { useState } from "react";
+import ConfirmByeProduct from "../modals/ConfirmByePoroduct";
 
 export default function Basket({email, basket, activeUser, setBasket, sum, setSum}){
 
+    const [open, setOpen] = useState(false);
+
     const bye = () => {
-        setSum(0)
-        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
-        setBasket({})
+        setOpen(true)
+        // setSum(0)
+        // localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
+        // setBasket({})
     }
 
     const deleteAll = async () => {
@@ -71,6 +76,9 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
                         <p>{sum}դր</p>
                         <div onClick={()=> bye()} style={{cursor: "pointer"}}> Գնել</div>
                     </div>
+                    {open && 
+                        <ConfirmByeProduct open={open} setOpen={setOpen}/>
+                    }
                 </div>
             </div>
     )

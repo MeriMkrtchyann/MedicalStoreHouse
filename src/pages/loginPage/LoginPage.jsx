@@ -46,7 +46,6 @@ export default function LoginPage({ setActiveUser, setBasket, setAdmin, email, s
     } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorCode, errorMessage);
       setErrorText(t("validLoginAndPasswordError"));
       setColor("red");
     }
