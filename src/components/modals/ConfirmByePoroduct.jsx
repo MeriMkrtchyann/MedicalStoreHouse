@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { styled, css } from '@mui/system';
 import { Modal as BaseModal } from '@mui/base/Modal';
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
 import Stack from '@mui/material/Stack';
 import removeBasket from '../../services/basket/firebaseDeleteBasket';
@@ -113,8 +115,21 @@ const Button = styled(BaseButton)(
   `,
 );
 
-const Backdrop = React.forwardRef((props, ref) => {});
-Backdrop.propTypes = {};
+const Backdrop = React.forwardRef((props, ref) => {
+    const { open, className, ...other } = props;
+    return (
+      <div
+        className={clsx({ 'base-Backdrop-open': open }, className)}
+        ref={ref}
+        {...other}
+      />
+    );
+  });
+  
+  Backdrop.propTypes = {
+    className: PropTypes.string.isRequired,
+    open: PropTypes.bool,
+  };
 
 const grey = {
   50: '#F3F6F9',
@@ -148,7 +163,6 @@ const Modal = styled(BaseModal)(`
   display: flex;
   align-items: center;
   justify-content: center;
-
   &.base-Modal-hidden {
     visibility: hidden;
   }
