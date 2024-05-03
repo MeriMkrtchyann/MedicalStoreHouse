@@ -1,64 +1,117 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
 import { styled, css } from '@mui/system';
 import { Modal as BaseModal } from '@mui/base/Modal';
+import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
+import Stack from '@mui/material/Stack';
+import removeBasket from '../../services/basket/firebaseDeleteBasket';
 
-export default function ConfirmByeProduct({open, setOpen}) {
-
+export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage, setSum, setBasket, activeUser}) {
+    
     const closeModal = () => {
         setOpen(false)
     }
+    const confirmOrder = async () => {
+        setSum(0)
+        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
+        setBasket({})
+        localStorage.setItem("basket", JSON.stringify(null));
+        setOpen(false)
+        await removeBasket(activeUser)
+    }
 
-  return (
-    <div>
-      <Modal
-        aria-labelledby="keep-mounted-modal-title"
-        aria-describedby="keep-mounted-modal-description"
-        open={open}
-        slots={{ backdrop: StyledBackdrop }}
-        keepMounted
-      >
-        <ModalContent sx={{ width: 400 }}>
-        <div className="deleteButton" onClick={() => closeModal()}>
-            <spanc lassName="deleteButton">&times;</spanc>
+    return (
+        <div>
+            <Modal
+                aria-labelledby="keep-mounted-modal-title"
+                aria-describedby="keep-mounted-modal-description"
+                open={open}
+                slots={{ backdrop: StyledBackdrop }}
+                keepMounted
+            >
+            <ModalContent sx={{ width: 400 }}>
+            <div className="closeByeModal" onClick={() => closeModal()}>
+                <p lassName="deleteButton" style={{textAlign: "end"}}>&times;</p>
+            </div>
+                <h2 id="keep-mounted-modal-title" className="modal-title" style={{textAlign: 'center' }}>
+                    Please confirm your order
+                </h2>
+                <p id="keep-mounted-modal-description" className="modal-description">
+                {quantity} product for the sum of <span style={{ fontWeight: "bold" }}>{sum} դր</span> 
+                </p>
+                <div className="allProductImages" style={{ display: "flex", height: "100px", padding: 10 }}>
+                {productImage &&
+                    productImage.map((image, index) => (
+                    <div
+                        key={index}
+                        className="productPicture"
+                        style={{
+                        width: "50px",
+                        height: "70px",
+                        marginRight: "10px",
+                        background: `url(${image})`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center",
+                        }}
+                    ></div>
+                    ))}
+                </div>
+                <Stack spacing={2} direction="row" style={{display:"flex" , alignItems: "center" ,justifyContent: "center"}}>
+                    <Button onClick={() => confirmOrder()}>
+                        Confirm Order
+                    </Button>
+                </Stack>
+            </ModalContent>
+            </Modal>
         </div>
-          <h2 id="keep-mounted-modal-title" className="modal-title">
-            Text in a modal
-          </h2>
-          <p id="keep-mounted-modal-description" className="modal-description">
-            Aliquid amet deserunt earum!
-          </p>
-        </ModalContent>
-      </Modal>
-    </div>
-  );
+    );
 }
 
-const Backdrop = React.forwardRef((props, ref) => {
-  const { open, className, ...other } = props;
-  return (
-    <div
-      className={clsx({ 'base-Backdrop-open': open }, className)}
-      ref={ref}
-      {...other}
-    />
-  );
-});
+const Button = styled(BaseButton)(
+  ({ theme }) => `
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background-color: ${blue[500]};
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: white;
+  transition: all 150ms ease;
+  cursor: pointer;
+  border: 1px solid ${blue[500]};
+  box-shadow: 0 2px 1px ${
+    theme.palette.mode === 'dark' ? 'rgba(0, 0, 0, 0.5)' : 'rgba(45, 45, 60, 0.2)'
+  }, inset 0 1.5px 1px ${blue[400]}, inset 0 -2px 1px ${blue[600]};
 
-Backdrop.propTypes = {
-  className: PropTypes.string.isRequired,
-  open: PropTypes.bool,
-};
+  &:hover {
+    background-color: ${blue[600]};
+  }
 
-const blue = {
-  200: '#99CCFF',
-  300: '#66B2FF',
-  400: '#3399FF',
-  500: '#007FFF',
-  600: '#0072E5',
-  700: '#0066CC',
-};
+  &.${buttonClasses.active} {
+    background-color: ${blue[700]};
+    box-shadow: none;
+    transform: scale(0.99);
+  }
+
+  &.${buttonClasses.focusVisible} {
+    box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? blue[300] : blue[200]};
+    outline: none;
+  }
+
+  &.${buttonClasses.disabled} {
+    background-color: ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+    color: ${theme.palette.mode === 'dark' ? grey[200] : grey[700]};
+    border: 0;
+    cursor: default;
+    box-shadow: none;
+    transform: scale(1);
+  }
+  `,
+);
+
+const Backdrop = React.forwardRef((props, ref) => {});
+Backdrop.propTypes = {};
 
 const grey = {
   50: '#F3F6F9',
@@ -72,6 +125,15 @@ const grey = {
   800: '#303740',
   900: '#1C2025',
 };
+
+const blue = {
+    200: '#99CCFF',
+    300: '#66B2FF',
+    400: '#3399FF',
+    500: '#007FFF',
+    600: '#0072E5',
+    700: '#0066CC',
+  };
 
 const Modal = styled(BaseModal)(`
   position: fixed;
@@ -131,33 +193,3 @@ const ModalContent = styled('div')(
   `,
 );
 
-const TriggerButton = styled('button')(
-  ({ theme }) => css`
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    padding: 8px 16px;
-    border-radius: 8px;
-    transition: all 150ms ease;
-    cursor: pointer;
-    background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-    border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-    color: ${theme.palette.mode === 'dark' ? grey[200] : grey[900]};
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-
-    &:hover {
-      background: ${theme.palette.mode === 'dark' ? grey[800] : grey[50]};
-      border-color: ${theme.palette.mode === 'dark' ? grey[600] : grey[300]};
-    }
-
-    &:active {
-      background: ${theme.palette.mode === 'dark' ? grey[700] : grey[100]};
-    }
-
-    &:focus-visible {
-      box-shadow: 0 0 0 4px ${theme.palette.mode === 'dark' ? blue[300] : blue[200]};
-      outline: none;
-    }
-  `,
-);

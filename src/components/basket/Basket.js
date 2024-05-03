@@ -8,12 +8,14 @@ import ConfirmByeProduct from "../modals/ConfirmByePoroduct";
 export default function Basket({email, basket, activeUser, setBasket, sum, setSum}){
 
     const [open, setOpen] = useState(false);
+    const [quantity , setQuantity] = useState(0)
+    const [productImage , setProductImage] = useState([])
 
     const bye = () => {
         setOpen(true)
-        // setSum(0)
-        // localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
-        // setBasket({})
+        setQuantity(Object.keys(basket).length)
+        const imageArray = Object.keys(basket).map((value) => basket[value].PraductImage )
+        setProductImage(imageArray)
     }
 
     const deleteAll = async () => {
@@ -77,7 +79,7 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
                         <div onClick={()=> bye()} style={{cursor: "pointer"}}> Գնել</div>
                     </div>
                     {open && 
-                        <ConfirmByeProduct open={open} setOpen={setOpen}/>
+                        <ConfirmByeProduct open={open} setOpen={setOpen} quantity={quantity} sum={sum} productImage={productImage} setBasket = {setBasket} setSum = {setSum} activeUser={activeUser}/>
                     }
                 </div>
             </div>

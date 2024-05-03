@@ -10,7 +10,7 @@ import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
-import updateUserData from "../../services/users/firebaseUpdate.js";
+import firebaseUpdateBasket from "../../services/users/firebaseUpdateBasket.js";
 
 export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 
@@ -34,13 +34,13 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
             let basketLength = Object.keys(basket)
             setBasketQuantityProducts(basketLength.length)
              async function updateUserBasket () {
-                await updateUserData(activeUser, basket , () => {
+                await firebaseUpdateBasket(activeUser, basket , () => {
                     console.log('Data updated successfully!!!');
                 });
             }
             updateUserBasket()
         }
-    }, [basket]);
+    }, [basket, activeUser]);
 
     return(
         <nav className='nav'>
