@@ -4,13 +4,16 @@ import { Modal as BaseModal } from '@mui/base/Modal';
 import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
 import Stack from '@mui/material/Stack';
 import removeBasket from '../../services/basket/firebaseDeleteBasket';
+import firebaseUpdateOrders from '../../services/basket/firebaseUpdateOrders';
 
-export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage, setSum, setBasket, activeUser}) {
+export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage, setSum, setBasket, activeUser, basket}) {
     
     const closeModal = () => {
         setOpen(false)
     }
     const confirmOrder = async () => {
+        Object.keys(basket).map((id) => basket[id].ordered = false)
+        await firebaseUpdateOrders(activeUser , basket)
         setSum(0)
         localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
         setBasket({})

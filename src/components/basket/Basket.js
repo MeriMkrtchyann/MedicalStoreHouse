@@ -79,7 +79,7 @@ export default function Basket({email, basket, activeUser, setBasket, sum, setSu
                         <div onClick={()=> bye()} style={{cursor: "pointer"}}> Գնել</div>
                     </div>
                     {open && 
-                        <ConfirmByeProduct open={open} setOpen={setOpen} quantity={quantity} sum={sum} productImage={productImage} setBasket = {setBasket} setSum = {setSum} activeUser={activeUser}/>
+                        <ConfirmByeProduct open={open} setOpen={setOpen} quantity={quantity} sum={sum} productImage={productImage} setBasket = {setBasket} setSum = {setSum} activeUser={activeUser} basket={basket}/>
                     }
                 </div>
             </div>

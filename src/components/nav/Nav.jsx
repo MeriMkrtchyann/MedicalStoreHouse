@@ -10,7 +10,7 @@ import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
-import firebaseUpdateBasket from "../../services/users/firebaseUpdateBasket.js";
+import firebaseUpdateBasket from "../../services/basket/firebaseUpdateBasket.js";
 
 export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 

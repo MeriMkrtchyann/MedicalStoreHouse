@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RemoveRounded } from "@mui/icons-material";
 import { AddRounded } from "@mui/icons-material";
-import updateUserData from "../../services/users/firebaseUpdateBasket";
+import updateUserData from "../../services/basket/firebaseUpdateBasket";
 import readUserData from "../../services/users/firebaseGet";
 
 export default function CountDecInc({setBasket ,activeUser,basket, product, praductQuantity, praductPrice=0, sum=0, setSum=()=>{}}){
