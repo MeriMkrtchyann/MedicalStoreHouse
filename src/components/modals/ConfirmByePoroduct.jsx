@@ -35,7 +35,7 @@ export default function ConfirmByeProduct({open, setOpen, quantity, sum, product
             >
             <ModalContent sx={{ width: 400 }}>
             <div className="closeByeModal" onClick={() => closeModal()}>
-                <p lassName="deleteButton" style={{textAlign: "end"}}>&times;</p>
+                <p lassName="deleteButton" style={{textAlign: "end" , fontSize: 25, cursor: "pointer"}}>&times;</p>
             </div>
                 <h2 id="keep-mounted-modal-title" className="modal-title" style={{textAlign: 'center' }}>
                     Please confirm your order

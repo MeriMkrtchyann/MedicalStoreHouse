@@ -1,6 +1,6 @@
 import { getDatabase, ref, get } from "firebase/database";
 
-export default async function readAllUsersData(email) {
+export default async function readAllUsersData() {
     const db = getDatabase();
     const usersRef = ref(db, 'users');
     try {
