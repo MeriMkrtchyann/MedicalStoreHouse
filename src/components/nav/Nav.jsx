@@ -11,15 +11,28 @@ import readCategoresData from "../../services/categories/firebaseGetCategories.j
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
 import firebaseUpdateBasket from "../../services/basket/firebaseUpdateBasket.js";
+import { UserIcon } from "../icons/Icons.jsx";
+import AboutUser from "../modals/AboutUser.jsx";
 
 export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
     const [basketQuantityProducts, setBasketQuantityProducts] = useState(0)
+    const [aboutUserModal , setAboutUserModal] = useState(false)
     
-    const openAndCloseModal = () => {
+    const openAndCloseBasketModal = () => {
         setBasketModal(!basketModal)
+        if (aboutUserModal){
+            setAboutUserModal(false)
+        }
+    }
+
+    const openAndCloseUserModal = () => {
+        setAboutUserModal(!aboutUserModal)
+        if (basketModal){
+            setBasketModal(false)
+        }
     }
 
     useEffect(() => {
@@ -53,14 +66,14 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
                 {activeUser ?
                     <>
                         <SignOut setActiveUser={setActiveUser} setBasket={setBasket} />
-                        {Object.keys(activeUser).map((id) =>
-                          <UserAvatar key={id} userName={activeUser[id].username} />
-                        )}
+                        <div style={{cursor: 'pointer'}} onClick={() => openAndCloseUserModal()}>
+                            <UserIcon />
+                        </div>
                     </>
                 : 
                     <SignIn/>
                 }
-                <div className="basketAndQuantityContainer" onClick={openAndCloseModal}>
+                <div className="basketAndQuantityContainer" onClick={openAndCloseBasketModal}>
                     <BasketShop />
                     <span className={basketQuantityProducts ? "quantity" : "quantityZero"}>
                         {basketQuantityProducts}
@@ -68,10 +81,14 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
                 </div>
                 <LanguageSelector background={"black"}/>
             </div>  
-            {basketModal &&
-                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum} />
+            {basketModal &&   
+                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseBasketModal={openAndCloseBasketModal} sum={sum} setSum={setSum} />
+            }
+            {aboutUserModal &&
+                <AboutUser activeUser={activeUser} />
             }             
         </nav>
     )
 }
+
 

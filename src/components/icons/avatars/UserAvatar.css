@@ -1,15 +1,14 @@
 .userIcon {
     position: relative;
-    width: 25px;
-    height: 25px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #282e59;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #282e59;
-    font-size: 20px;
-    
+    color: white;
+    font-size: 25px;
 }
   
   
