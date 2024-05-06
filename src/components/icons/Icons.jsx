@@ -13,7 +13,9 @@ import { faHome,
         faTimes,
         faCartShopping,
         faRightToBracket,
-      } from '@fortawesome/free-solid-svg-icons';
+        faBagShopping,
+        faTruck
+  } from '@fortawesome/free-solid-svg-icons';
 
 
 function GoHomeIcon({ color }) {
@@ -152,9 +154,27 @@ function FaCartShopping () {
   );
 };
 
+function BagShopping () {
+  return (
+    <div>
+      <FontAwesomeIcon icon={faBagShopping} />
+    </div>
+  );
+};
 
 
-export { GoHomeIcon, PyramidMenuIcon, UserIcon, GlobeIcon, LogOut, LogIn, ChartColumn, FaPen, FaTrash, AdminIcon, FaCheck, FaTimes, FaCartShopping };
+function Deliveries () {
+  return (
+    <div>
+      <FontAwesomeIcon icon={faTruck} />
+    </div>
+  );
+};
+
+
+
+
+export { GoHomeIcon, PyramidMenuIcon, UserIcon, GlobeIcon, LogOut, LogIn, ChartColumn, FaPen, FaTrash, AdminIcon, FaCheck, FaTimes, FaCartShopping, BagShopping, Deliveries };
 
 
 
