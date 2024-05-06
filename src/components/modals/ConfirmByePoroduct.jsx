@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
 import Stack from '@mui/material/Stack';
 import removeBasket from '../../services/basket/firebaseDeleteBasket';
-import firebaseUpdateOrders from '../../services/basket/firebaseUpdateOrders';
+import firebaseAddOrders from '../../services/basket/firebaseAddOrders';
 
 export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage, setSum, setBasket, activeUser, basket}) {
     
@@ -15,7 +15,7 @@ export default function ConfirmByeProduct({open, setOpen, quantity, sum, product
     }
     const confirmOrder = async () => {
         Object.keys(basket).map((id) => basket[id].ordered = false)
-        await firebaseUpdateOrders(activeUser , basket)
+        await firebaseAddOrders(activeUser , basket)
         setSum(0)
         localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
         setBasket({})

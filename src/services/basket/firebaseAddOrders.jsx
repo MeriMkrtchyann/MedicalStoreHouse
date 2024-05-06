@@ -1,7 +1,7 @@
 import { getDatabase, ref, update, push } from "firebase/database";
 
-export default async function firebaseUpdateOrders(activUser, newProducts, callback) {
-    
+export default async function firebaseUpdateOrders(activUser, newProducts) {
+
     if (!activUser ) {
         console.error('Invalid active user!');
         return;
@@ -22,7 +22,6 @@ export default async function firebaseUpdateOrders(activUser, newProducts, callb
     update(userRef, updates)
     .then(() => {
         console.log('Data updated successfully!');
-        if (callback) callback(); 
     })
     .catch((error) => console.error('Failed to update data:', error));
 }

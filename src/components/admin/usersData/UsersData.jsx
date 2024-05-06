@@ -3,6 +3,7 @@ import readAllUsersData from "../../../services/admins/firebaseGetAllUsers"
 import { useState } from "react"
 import { useEffect } from "react"
 import {OrderConfirm} from "../../icons/adminPageIcons/adminPageIcons"
+import firebaseUpdateOrder from "../../../services/basket/firabeseUpdateOrder"
 
 export default function UsersData() {
 
@@ -14,6 +15,11 @@ export default function UsersData() {
         }
         allUsersData()
     },[])
+
+    const orderConfirmation = async (userID, orderId, praduct, id ) => {
+        id[praduct].ordered = true
+        await firebaseUpdateOrder(userID, orderId, id[praduct], praduct)
+    }
 
     return(
         <div className="usersDataContainer" >
@@ -74,7 +80,7 @@ export default function UsersData() {
                                                     <tr>
                                                         <td>{praduct}</td>
                                                         <td>{id[praduct].inBasket}</td>
-                                                        <td>{id[praduct].ordered ? <OrderConfirm color={"green"}/> : <OrderConfirm color={"red"}/>}</td>
+                                                        <td style={{cursor: 'pointer'}} onClick={() => orderConfirmation( userID, orderId, praduct, id )}>{id[praduct].ordered ? <OrderConfirm color={"green"}/> : <OrderConfirm />}</td>
                                                     </tr>
                                                     </>
                                                 )
