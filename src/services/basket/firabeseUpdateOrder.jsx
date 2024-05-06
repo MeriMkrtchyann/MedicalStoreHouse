@@ -6,11 +6,6 @@ export default async function firebaseUpdateOrder(activUser, orderId, upadate, p
         console.error('Invalid active user!');
         return;
     }
-    console.log( activUser)
-    console.log( orderId)
-    console.log( upadate)
-    console.log( praduct)
-    
 
     const db = getDatabase();
     const userRef = ref(db, `users/${activUser}/Orders/${orderId}/${praduct}`); 

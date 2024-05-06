@@ -17,7 +17,7 @@ export default function UsersData() {
     },[])
 
     const orderConfirmation = async (userID, orderId, praduct, id ) => {
-        id[praduct].ordered = true
+        id[praduct].ordered = !(id[praduct].ordered)
         await firebaseUpdateOrder(userID, orderId, id[praduct], praduct)
     }
 
