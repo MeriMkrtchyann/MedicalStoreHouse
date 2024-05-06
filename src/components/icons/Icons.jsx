@@ -14,7 +14,8 @@ import { faHome,
         faCartShopping,
         faRightToBracket,
         faBagShopping,
-        faTruck
+        faTruck,
+        faClockRotateLeft
   } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -171,10 +172,16 @@ function Deliveries () {
   );
 };
 
+function History () {
+  return (
+    <div>
+      <FontAwesomeIcon icon={faClockRotateLeft} />
+    </div>
+  );
+};
 
 
-
-export { GoHomeIcon, PyramidMenuIcon, UserIcon, GlobeIcon, LogOut, LogIn, ChartColumn, FaPen, FaTrash, AdminIcon, FaCheck, FaTimes, FaCartShopping, BagShopping, Deliveries };
+export { GoHomeIcon, PyramidMenuIcon, UserIcon, GlobeIcon, LogOut, LogIn, ChartColumn, FaPen, FaTrash, AdminIcon, FaCheck, FaTimes, FaCartShopping, BagShopping, Deliveries, History };
 
 
 

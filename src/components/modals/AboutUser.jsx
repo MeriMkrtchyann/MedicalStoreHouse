@@ -1,5 +1,5 @@
 
-import { BagShopping, Deliveries } from "../icons/Icons"
+import { History, Deliveries } from "../icons/Icons"
 import UserAvatar from "../icons/avatars/UserAvatars"
 import "./AboutUser.css"
 
@@ -29,9 +29,9 @@ export default function AboutUser({activeUser}){
                     </div>
                     <div className="purchases">
                         <div className="purchasesIcon">
-                            <BagShopping/>
+                            <History/>
                         </div>
-                        <span>Purchases</span>
+                        <span>History</span>
                     </div>
                     
                 </div>
