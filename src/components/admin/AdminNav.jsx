@@ -11,7 +11,7 @@ const StyledToolbar = styled(Toolbar)`
   background-color: black;
 `;
 
-export default function AdminNav({drawerWidth,setAdmin}){
+export default function AdminNav({drawerWidth , setAdmin}){
     const navigate = useNavigate()
 
     const onClickLogOut = () => {

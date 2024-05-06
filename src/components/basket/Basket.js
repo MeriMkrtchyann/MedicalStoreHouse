@@ -1,35 +1,47 @@
-import { useEffect } from "react";
 import CountDecInc from "../countDecInc/CountDecInc"
 import "./Basket.css"
-import updateUserData from "../../services/users/firebaseUpdate";
+import removeBasket from "../../services/basket/firebaseDeleteBasket";
+import removeElementFromBasket from "../../services/basket/firebaseRemoveElementFromBasket";
+import { useState } from "react";
+import ConfirmByeProduct from "../modals/ConfirmByePoroduct";
 
-export default function Basket({basket, activeUser, setBasket, sum, setSum}){
+export default function Basket({email, basket, activeUser, setBasket, sum, setSum}){
 
-    useEffect(() => {
-        async function updateBasket () {
-            await updateUserData(activeUser, { basket: basket }, () => {
-              console.log('Data updated successfully!');
-            });
-        }
-        updateBasket()
-      });
-    
+    const [open, setOpen] = useState(false);
+    const [quantity , setQuantity] = useState(0)
+    const [productImage , setProductImage] = useState([])
+
     const bye = () => {
-        setSum(0)
-        setBasket({})
+        setOpen(true)
+        setQuantity(Object.keys(basket).length)
+        const imageArray = Object.keys(basket).map((value) => basket[value].PraductImage )
+        setProductImage(imageArray)
     }
 
-    const deleteAll = () => {
+    const deleteAll = async () => {
         setSum(0)
+        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
         setBasket({})
-        Object.keys(basket).map((product) => {basket[product].inBasket = 0})
+        localStorage.setItem("basket", JSON.stringify(null));
+        await removeBasket(activeUser)
     }
 
-    // const deleteProduct = (product) => {
-    //     setBasket(basket.filter(value=> value!== product))
-    //     setSum(sum - (+product.PraductPrice) * (+product.inBasket) )
-    //     product.inBasket = 0
-    // }
+    const deleteProduct =async (product) => {
+        let filteredBasket = Object.keys(basket)
+            .filter(key => key !== product)
+            .reduce((obj, key) => {
+                obj[key] = basket[key];
+                return obj;
+            }, {});
+        let newSum = Object.keys(filteredBasket)
+            .map((value) => filteredBasket[value].PraductPrice * filteredBasket[value].inBasket)
+            .reduce((acc, value) => acc + value, 0);
+        setSum(newSum)
+        localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
+        await removeElementFromBasket(activeUser, product)
+        setBasket(filteredBasket)
+        localStorage.setItem("basket", JSON.stringify(filteredBasket));
+    }
 
     return(
         <div className="basketModal">
@@ -50,11 +62,11 @@ export default function Basket({basket, activeUser, setBasket, sum, setSum}){
                                     <p>{aboutProduct.PraductId}</p>
                                 </div>
                                 <div className="basketProductPrice">
-                                    {/* <div className="deleteButton" onClick={() => deleteProduct(product)}>
+                                    <div className="deleteButton" onClick={() => deleteProduct(product)}>
                                         <spanc lassName="deleteButton">&times;</spanc>
-                                    </div> */}
+                                    </div>
                                     <div>
-                                        <CountDecInc basket={basket}  activeUser={activeUser} product={aboutProduct} praductQuantity={aboutProduct.PraductQuantity} praductPrice={aboutProduct.PraductPrice}  sum={sum} setSum={setSum}/>
+                                        <CountDecInc setBasket={setBasket} email={email} basket={basket}  activeUser={activeUser} product={aboutProduct} praductQuantity={aboutProduct.PraductQuantity} praductPrice={aboutProduct.PraductPrice}  sum={sum} setSum={setSum}/>
                                     </div>
                                     <div className="basketPrice">{aboutProduct.PraductPrice}դր</div>
                                 </div>
@@ -66,6 +78,9 @@ export default function Basket({basket, activeUser, setBasket, sum, setSum}){
                         <p>{sum}դր</p>
                         <div onClick={()=> bye()} style={{cursor: "pointer"}}> Գնել</div>
                     </div>
+                    {open && 
+                        <ConfirmByeProduct open={open} setOpen={setOpen} quantity={quantity} sum={sum} productImage={productImage} setBasket = {setBasket} setSum = {setSum} activeUser={activeUser} basket={basket}/>
+                    }
                 </div>
             </div>
     )

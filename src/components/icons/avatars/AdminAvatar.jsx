@@ -3,6 +3,7 @@ import { FaPen, FaTrash } from '../Icons';
 import "./AdminAvatar.css"
 
 const AdminIcon = ({ userName }) => {
+
   const [userImage, setUserImage] = useState(null);
   const [hovering, setHovering] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

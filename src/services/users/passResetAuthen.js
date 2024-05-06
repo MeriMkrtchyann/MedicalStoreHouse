@@ -1,5 +1,5 @@
 import { getAuth, updatePassword } from "firebase/auth";
-import firebaseUpdate from "./firebaseUpdate";
+import firebaseUpdate from "../basket/firebaseUpdateBasket";
 
 export default async function passResetAuthen( email ,aboutUser , canfirmNewPassword, newPassword, setErrorText, setColor) {
   const sha256 = require('js-sha256');

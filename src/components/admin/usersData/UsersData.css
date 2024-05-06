@@ -1,0 +1,36 @@
+.usersDataContainer{
+    display: flex;
+    justify-content: center;
+    aline-align: center;
+    transform:  translateY(90px);
+    transition: transform 0.3s; 
+}
+
+.usersDataTabel {
+    width: 95%;
+    border-collapse: collapse;
+}
+
+.usersDataTabel th,
+.usersDataTabel td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.usersDataTabel th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+    text-align: center;
+}
+
+.usersDataTabel td {
+    text-align: left;
+    text-align: center;
+}
+
+.basket {
+    desplay: inline;
+    text-align: center;
+}

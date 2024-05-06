@@ -7,10 +7,10 @@ import NotFoundPage from "./pages/notFoundPage/NotFoundPage"
 import {SignUpPage} from "./pages/signUpPage/SignUpPage"
 import Product from "./components/product/Product"
 import { Route, Routes } from 'react-router-dom'
-import updateUserData from "./services/users/firebaseUpdate";
 
 function App() {
 
+  const [email, setEmail] = useState('');
   const [activeUser, setActiveUser] = useState(null);
   const [product ,setProduct] = useState(null);
   const [activeCategory, setActiveCategory] = useState(null);
@@ -21,35 +21,32 @@ function App() {
   useEffect(() => {
     const storedUser = localStorage.getItem("activeUser");
     const storedAdmin = localStorage.getItem("activeAdmin");
+    const storedBasket = localStorage.getItem("basket");
+    const storedBaketSum = localStorage.getItem("basketSum");
     if (storedUser) {
       setActiveUser(JSON.parse(storedUser));
+    }
+    if (storedBasket){
+      setBasket(JSON.parse(storedBasket))
     }
     if (storedAdmin) {
       setAdmin(JSON.parse(storedAdmin));
     }
-  }, []);
-
-
-  useEffect(() => {
-    async function updateBasket () {
-      if (activeUser) {
-        await updateUserData(activeUser, { basket: basket }, () => {
-          console.log('Data updated successfully!');
-        });
-       }
+    if (storedBaketSum){
+      const sum =JSON.parse(storedBaketSum).sum
+      setSum(sum)
     }
-    updateBasket()
-  }, [activeUser, basket]);
+  },[]);
 
   return (
     <>
       <Routes>
-          <Route path="/" element={<HomePage admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
-          <Route path="/signIn" element={<LoginPage setActiveUser={setActiveUser} setAdmin={setAdmin} activeUser={activeUser} admin={admin}/>} />
+          <Route path="/" element={<HomePage email={email}  admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
+          <Route path="/signIn" element={<LoginPage setBasket={setBasket}  email={email} setEmail={setEmail} setActiveUser={setActiveUser} setAdmin={setAdmin} activeUser={activeUser} admin={admin}/>} />
           <Route path="/signUp" element={<SignUpPage activeUser={activeUser}/>}/>
           <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
-          <Route path="/admin" element={admin ? <AdminPage setAdmin={setAdmin}/> : <NotFoundPage/>}/>
+          <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
       </Routes>
     </>
   );

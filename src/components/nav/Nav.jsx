@@ -10,8 +10,9 @@ import UserAvatar from "../icons/avatars/UserAvatars";
 import readCategoresData from "../../services/categories/firebaseGetCategories.js"
 import { useState, useEffect } from "react";
 import Basket from "../basket/Basket.js";
+import firebaseUpdateBasket from "../../services/basket/firebaseUpdateBasket.js";
 
-export default function Nav({ activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
+export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
@@ -29,8 +30,17 @@ export default function Nav({ activeUser, setActiveUser, setActiveCategory, bask
     }, []);
 
     useEffect(() => {
-        setBasketQuantityProducts(basket.length)
-    }, [basket]);
+        if (basket){
+            let basketLength = Object.keys(basket)
+            setBasketQuantityProducts(basketLength.length)
+             async function updateUserBasket () {
+                await firebaseUpdateBasket(activeUser, basket , () => {
+                    console.log('Data updated successfully!!!');
+                });
+            }
+            updateUserBasket()
+        }
+    }, [basket, activeUser]);
 
     return(
         <nav className='nav'>
@@ -42,7 +52,7 @@ export default function Nav({ activeUser, setActiveUser, setActiveCategory, bask
                 <Categories categories={categories} setActiveCategory={setActiveCategory}/>
                 {activeUser ?
                     <>
-                        <SignOut setActiveUser={setActiveUser} />
+                        <SignOut setActiveUser={setActiveUser} setBasket={setBasket} />
                         {Object.keys(activeUser).map((id) =>
                           <UserAvatar key={id} userName={activeUser[id].username} />
                         )}
@@ -59,8 +69,9 @@ export default function Nav({ activeUser, setActiveUser, setActiveCategory, bask
                 <LanguageSelector background={"black"}/>
             </div>  
             {basketModal &&
-                <Basket basket={basket} activeUser={activeUser} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum}  setBasketQuantityProducts={setBasketQuantityProducts} basketQuantityProducts={basketQuantityProducts}/>
+                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseModal={openAndCloseModal} sum={sum} setSum={setSum} />
             }             
         </nav>
     )
 }
+

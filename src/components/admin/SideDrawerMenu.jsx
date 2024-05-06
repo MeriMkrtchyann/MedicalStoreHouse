@@ -17,11 +17,14 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const categories = [
-  { primary: "Catalog", subcategories: ["Products", "Categories"] }
+  { primary: "Catalog", subcategories: ["Products", "Categories"] },
+  { primary: "Users"}
 ];
 
-const SideDrawerMenu = ({drawerWidth , setOpenDivMenu}) => {
+const SideDrawerMenu = ({admin, drawerWidth , setOpenDivMenu}) => {
+  
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const adminName = Object.keys(admin).map((id) => admin[id].name)
 
   const chooseType = (subcategory) => {
     setOpenDivMenu(subcategory)
@@ -52,7 +55,7 @@ const SideDrawerMenu = ({drawerWidth , setOpenDivMenu}) => {
       marginBottom: 10,
       marginTop: 15,
     }}>
-    <AdminIcon userName={"Admin"} />
+    <AdminIcon userName={adminName[0]} />
     </div>
     <List style={{ padding: '0px' }}>
       {categories.map(({ primary, subcategories }, index) => (

@@ -23,7 +23,7 @@ import "./LoginPage.css"
 
 const defaultTheme = createTheme();
 
-export default function Login({handleSubmit, setEmail, setPassword, color, errorText}) {
+export default function Login({handleSubmit,  setEmail, setPassword, color, errorText}) {
   const [showPassword, setShowPassword] = useState(false)
   const { t } = useTranslation();
 
@@ -138,3 +138,5 @@ export default function Login({handleSubmit, setEmail, setPassword, color, error
       </ThemeProvider>
     )
 }
+
+
