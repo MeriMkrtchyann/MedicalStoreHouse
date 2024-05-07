@@ -5,24 +5,13 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
 import Stack from '@mui/material/Stack';
-import removeBasket from '../../services/basket/firebaseDeleteBasket';
-import firebaseAddOrders from '../../services/basket/firebaseAddOrders';
+import { useNavigate } from 'react-router-dom';
 
-export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage, setSum, setBasket, activeUser, basket}) {
+export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage}) {
     
-    const closeModal = () => {
-        setOpen(false)
-    }
-    const confirmOrder = async () => {
-        Object.keys(basket).map((id) => basket[id].ordered = false)
-        await firebaseAddOrders(activeUser , basket)
-        setSum(0)
-        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
-        setBasket({})
-        localStorage.setItem("basket", JSON.stringify(null));
-        setOpen(false)
-        await removeBasket(activeUser)
-    }
+    const naviagte = useNavigate()
+    const closeModal = () => setOpen(false)
+    const confirmOrder = async () => naviagte("/payment")
 
     return (
         <div>

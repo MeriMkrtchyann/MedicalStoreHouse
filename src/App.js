@@ -18,6 +18,7 @@ function App() {
   const [admin , setAdmin] = useState(null);
   const [basket, setBasket] = useState([]);
   const [sum , setSum] = useState(0);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("activeUser");
@@ -42,13 +43,13 @@ function App() {
   return (
     <>
       <Routes>
-          <Route path="/" element={<HomePage email={email}  admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/>} />
+          <Route path="/" element={<HomePage email={email}  admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open} />} />
           <Route path="/signIn" element={<LoginPage setBasket={setBasket}  email={email} setEmail={setEmail} setActiveUser={setActiveUser} setAdmin={setAdmin} activeUser={activeUser} admin={admin}/>} />
           <Route path="/signUp" element={<SignUpPage activeUser={activeUser}/>}/>
           <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
           <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
-          <Route path="/payment" element={<PaymentPage sum={sum}/>}/>
+          <Route path="/payment" element={<PaymentPage sum={sum}  basket={basket} activeUser={activeUser} setSum={setSum} setBaske={setBasket} setOpen={setOpen} />}/>
       </Routes>
     </>
   );

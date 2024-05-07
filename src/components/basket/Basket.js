@@ -5,9 +5,8 @@ import removeElementFromBasket from "../../services/basket/firebaseRemoveElement
 import { useState } from "react";
 import ConfirmByeProduct from "../modals/ConfirmByePoroduct";
 
-export default function Basket({email, basket, activeUser, setBasket, sum, setSum, }){
+export default function Basket({email, basket, activeUser, setBasket, sum, setSum, setOpen, open}){
 
-    const [open, setOpen] = useState(false);
     const [quantity , setQuantity] = useState(0)
     const [productImage , setProductImage] = useState([])
 

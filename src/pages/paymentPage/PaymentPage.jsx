@@ -1,10 +1,23 @@
 import React from 'react';
 import './PaymentPage.css'; 
+import firebaseAddOrders from '../../services/basket/firebaseAddOrders';
+import removeBasket from '../../services/basket/firebaseDeleteBasket';
 
-const PaymentForm = ({sum}) => {
+const PaymentForm = ({sum, basket, activeUser, setSum, setBasket, setOpen}) => {
 
   const years = [];
   const manths = []
+
+  const byeProduct = async () => {
+    Object.keys(basket).map((id) => basket[id].ordered = false)
+        await firebaseAddOrders(activeUser , basket)
+        setSum(0)
+        localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
+        setBasket({})
+        localStorage.setItem("basket", JSON.stringify(null));
+        setOpen(false)
+        await removeBasket(activeUser)
+  }
 
   for (let year = 2024; year <= 2034; year++) {
     years.push(year);
@@ -70,7 +83,7 @@ const PaymentForm = ({sum}) => {
               <p>Եռանիշ թիվ, որը գտնվում է քարտի հակառակ կողմում</p>
               <input type="text" name="cvcNumber"></input>
             </div>
-            <div class="paymentButton">
+            <div class="paymentButton" onClick={()=>byeProduct()}>
               <button>ՎՃԱՐԵԼ</button>
             </div>
           </div>

@@ -4,6 +4,7 @@ import basektButton from "../../services/basket/basektButton.js";
 
 export default function RenderProducts ({products, activeUser, setAboutPrductData, setBasket, basket, sum, setSum}) {
     const navigate = useNavigate();
+    
     const aboutProduct = (data) => {
         setAboutPrductData(data);
         navigate("/aboutProduct");

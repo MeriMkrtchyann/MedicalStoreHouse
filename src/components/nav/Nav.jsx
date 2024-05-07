@@ -14,7 +14,7 @@ import firebaseUpdateBasket from "../../services/basket/firebaseUpdateBasket.js"
 import { UserIcon } from "../icons/Icons.jsx";
 import AboutUser from "../modals/AboutUser.jsx";
 
-export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum}){
+export default function Nav({email, activeUser, setActiveUser, setActiveCategory, basket, setBasket, sum, setSum, setOpen, open}){
 
     const [categories, setCategories] = useState([])
     const [basketModal, setBasketModal] = useState(false)
@@ -82,7 +82,7 @@ export default function Nav({email, activeUser, setActiveUser, setActiveCategory
                 <LanguageSelector background={"black"}/>
             </div>  
             {basketModal &&   
-                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseBasketModal={openAndCloseBasketModal} sum={sum} setSum={setSum} />
+                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseBasketModal={openAndCloseBasketModal} sum={sum} setSum={setSum} setOpen={setOpen} open={open} />
             }
             {aboutUserModal &&
                 <AboutUser activeUser={activeUser} />
