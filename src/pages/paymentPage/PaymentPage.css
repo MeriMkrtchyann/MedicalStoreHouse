@@ -1,0 +1,165 @@
+/* .paymentPage{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.paymentPageConteyner{
+    padding:70px;
+}
+
+.logoAndTime  {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap:120px;
+    margin-bottom: 15px;
+}
+
+.logoAndTime img {
+    width: 200px;
+}
+
+.paymentConteyner{
+    align-align:center;
+    border: 2px solid #c2c2c2; 
+    border-radius: 2%;
+}
+
+.paymentConteyner div{
+    margin-bottom: 15px;
+}
+
+.paymentConteyner input{
+    padding: 7px;
+    
+}
+
+.paymentTitle{
+    background-color:#00a8a8;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+.paymentForm{
+   
+}
+
+.paymentForm h3 {
+    font-size: 20px;
+}
+
+.paymentForm p {
+    font-size: 12px;
+    color : #8d8d8d
+}
+
+.paymentButton button{
+    background-color : #88e714;
+    color: white;
+    padding:10px;
+    width: 150px;
+}
+
+.paymentButton{
+    text-align: center;
+}
+
+.sum span{
+    background-color : #00a8a8;
+    text-align: center;
+    padding: 5px 20px;
+}
+
+.sum {
+    margin-top: 10px;
+}
+ */
+
+ .paymentPageConteyner{
+    padding: 25px 25px;
+ }
+
+ .paymentTitle{
+    background-color:#00a8a8;
+    border-radius: 5%;
+  }
+
+ .paymentPage {
+    max-width: 600px;
+    margin: auto;
+  }
+
+  .paymentConteyner{
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  .paymentTitle{
+    padding: 10px;
+  }
+  
+  .paymentForm {
+    padding: 15px 25px;
+  }
+  
+  .logoAndTime {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .ameriBankLogo img {
+    max-width: 150px;
+  }
+  
+  .timeEnded p {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .paymentTitle p,
+  .paymentForm h3,
+  .paymentForm p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .paymentForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .manthAndYear select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .paymentButton button {
+    background-color: green;
+    color: white;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .paymentButton{
+    text-align: center;
+  }
+  
+  .sum span{
+    background-color : #00a8a8;
+    text-align: center;
+    padding: 5px 20px;
+}
+
+.sum {
+    margin:10px 2px;
+}
