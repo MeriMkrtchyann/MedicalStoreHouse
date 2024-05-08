@@ -51,7 +51,6 @@ function App() {
   useEffect( () => {
     const apdateData = async () => {
       if (email) {
-        console.log(email)
         const activeUser = await readUserData(email);
         setActiveUser(activeUser);
         localStorage.setItem("activeUser", JSON.stringify(activeUser));

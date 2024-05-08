@@ -6,8 +6,7 @@ export default function basektButton (product,  setBasket, basket, sum, setSum )
     let myBasket = {}
     if (!basket){
         myBasket =  {[product.PraductId] : product}
-    }
-    if (!basket.hasOwnProperty(product.PraductId)){
+    }else if (!basket.hasOwnProperty(product.PraductId)){
             myBasket =  {
                 ...basket , 
                 [product.PraductId] : product

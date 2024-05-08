@@ -5,22 +5,26 @@ import removeElementFromBasket from "../../services/basket/firebaseRemoveElement
 import { useState } from "react";
 import ConfirmByeProduct from "../modals/ConfirmByePoroduct";
 
-export default function Basket({email, basket, activeUser, setBasket, sum, setSum, setOpen, open}){
+export default function Basket({setBasketQuantityProducts,email, basket, activeUser, setBasket, sum, setSum, setOpen, open}){
 
     const [quantity , setQuantity] = useState(0)
     const [productImage , setProductImage] = useState([])
 
     const bye = () => {
-        setOpen(true)
-        setQuantity(Object.keys(basket).length)
-        const imageArray = Object.keys(basket).map((value) => basket[value].PraductImage )
-        setProductImage(imageArray)
+        if (basket && sum) {
+            setOpen(true)
+            setQuantity(Object.keys(basket).length)
+            const imageArray = Object.keys(basket).map((value) => basket[value].PraductImage )
+            setProductImage(imageArray)
+        }
+        
     }
 
     const deleteAll = async () => {
         setSum(0)
         localStorage.setItem("basketSum", JSON.stringify({sum : 0}));
-        setBasket({})
+        setBasket(null)
+        setBasketQuantityProducts(0)
         localStorage.setItem("basket", JSON.stringify(null));
         await removeBasket(activeUser)
     }

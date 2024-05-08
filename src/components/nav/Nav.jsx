@@ -82,7 +82,7 @@ export default function Nav({setActivButtonType, email, activeUser, setActiveUse
                 <LanguageSelector background={"black"}/>
             </div>  
             {basketModal &&   
-                <Basket email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseBasketModal={openAndCloseBasketModal} sum={sum} setSum={setSum} setOpen={setOpen} open={open} />
+                <Basket setBasketQuantityProducts={setBasketQuantityProducts} email={email}  basket={basket} activeUser={activeUser} setActiveUser={setActiveUser} setBasket={setBasket} openAndCloseBasketModal={openAndCloseBasketModal} sum={sum} setSum={setSum} setOpen={setOpen} open={open} />
             }
             {aboutUserModal &&
                 <AboutUser activeUser={activeUser} setActivButtonType={setActivButtonType} />
