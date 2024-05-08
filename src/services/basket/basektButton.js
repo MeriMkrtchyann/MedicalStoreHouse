@@ -1,19 +1,26 @@
 export default function basektButton (product,  setBasket, basket, sum, setSum ){
+
     product.inBasket = 1
+    let newSum = sum
+
     let myBasket = {}
-    if (basket && !basket.hasOwnProperty(product.PraductId)){
+    if (!basket){
+        myBasket =  {[product.PraductId] : product}
+    }
+    if (!basket.hasOwnProperty(product.PraductId)){
             myBasket =  {
                 ...basket , 
                 [product.PraductId] : product
+                
             }
-            setBasket(myBasket)
     }else {
-            myBasket =  {[product.PraductId] : product}
-            setBasket(myBasket)
-        }
-        localStorage.setItem("basket", JSON.stringify(myBasket));
-        const newSum = sum + (+product.PraductPrice * product.inBasket)
-        setSum(newSum)
-        localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
+        return
+    }
+        
+    localStorage.setItem("basket", JSON.stringify(myBasket));
+    localStorage.setItem("basketSum", JSON.stringify({sum : newSum}));
+    newSum += (+product.PraductPrice * product.inBasket)
+    setSum(newSum)
+    setBasket(myBasket)
 }
        
