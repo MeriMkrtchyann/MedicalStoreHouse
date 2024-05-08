@@ -25,13 +25,13 @@ export default function AboutUser({activeUser, setActivButtonType}){
                 <div className="modalConteyner">
                     <div className="aboutUser">
                     {Object.values(activeUser).map((user) => (
-                        <div key={user.id}>
+                        <div key={user.id} className="aboutUser">
                         <div>
                             <UserAvatar userName={user.username} />
                         </div>
                         <div className="userNameAndPhone">
                             <p className="userName">{user.firstName}</p>
-                            <p>{user.contact}</p>
+                            <p>{user.conatct}</p>
                         </div>
                         </div>
                     ))}

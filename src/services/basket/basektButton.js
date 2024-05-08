@@ -11,7 +11,6 @@ export default function basektButton (product,  setBasket, basket, sum, setSum )
             myBasket =  {
                 ...basket , 
                 [product.PraductId] : product
-                
             }
     }else {
         return

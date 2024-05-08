@@ -10,7 +10,6 @@
 }
 
 .modalConteyner {
-    flex-direction: column;
     color: #282e59;
     display: flex;
   }
@@ -18,7 +17,7 @@
 .aboutUser{
     display: flex;
     align-items: center;
-    padding-left:20px;
+    padding-left:10px;
     gap : 20px;
 }
 

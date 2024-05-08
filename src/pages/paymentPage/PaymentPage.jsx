@@ -47,9 +47,6 @@ export default  function PaymentPage ({sum, basket, activeUser, setSum, setBaske
           <div className="ameriBankLogo">
             <img src ={process.env.PUBLIC_URL + "img/ameriabank.svg"} alt="logo"/> 
           </div>
-          <div className="timeEnded">
-            <p>Աշխատանքի ավրտին մնացել է </p>
-          </div>
         </div>
         <div className="paymentConteyner">
           <div className="paymentTitle">
