@@ -9,6 +9,7 @@ import Product from "./components/product/Product"
 import { Route, Routes } from 'react-router-dom'
 import PaymentPage from "./pages/paymentPage/PaymentPage";
 import DeliveriesPage from "./pages/deliveriesPage/DeliveriesPage";
+import readUserData from "./services/users/firebaseGet";
 
 function App() {
 
@@ -42,6 +43,14 @@ function App() {
       setSum(sum)
     }
   },[]);
+
+  useEffect( () => {
+    const apdateData = async () => {
+      setActiveUser(await readUserData(email))
+    }
+    console.log("barev")
+    apdateData()
+  },[activButtonType])
 
   return (
     <>
