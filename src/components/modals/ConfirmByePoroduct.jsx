@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { Button as BaseButton, buttonClasses } from '@mui/base/Button';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
+import { Deliveries } from '../icons/Icons';
 
 export default function ConfirmByeProduct({open, setOpen, quantity, sum, productImage}) {
     
@@ -46,9 +47,13 @@ export default function ConfirmByeProduct({open, setOpen, quantity, sum, product
                         backgroundSize: "cover",
                         backgroundRepeat: "no-repeat",
                         backgroundPosition: "center",
-                        }}
-                    ></div>
+                        }}>
+                    </div>
                     ))}
+                </div>
+                <div style={{display: "flex", gap : 7}}>
+                  <Deliveries/> 
+                  <p> Delivery will be made within 2 business days</p>
                 </div>
                 <Stack spacing={2} direction="row" style={{display:"flex" , alignItems: "center" ,justifyContent: "center"}}>
                     <Button onClick={() => confirmOrder()}>

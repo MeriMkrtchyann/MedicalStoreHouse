@@ -3,9 +3,8 @@ import Nav from "../../components/nav/Nav"
 import Main from "../../components/main/Main";
 import getCategoryData from "../../services/allProducts/AllPraducts";
 
-export default function HomePage ({ email, activeUser,activeCategory, setActiveUser, setAboutPrductData, setActiveCategory, basket, setBasket, setSum, sum, setOpen, open}){
-    
-    const [allData , setAllData] = useState({});
+export default function HomePage ({ email, activeUser,activeCategory, setActiveUser, setAboutPrductData, setActiveCategory, basket, setBasket, setSum, sum, setOpen, open, allData , setAllData}){
+
 
     useEffect(() => {
         async function fetchData() {

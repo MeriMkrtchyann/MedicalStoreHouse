@@ -1,0 +1,43 @@
+.deliveriespRroductsConteyner{
+    padding-top :100px;
+    }
+    
+  .title{
+      text-align:center;
+      font-family: Arial, sans-serif;
+  }
+    
+  .deliveriesProductConteyner {
+      padding-top:10px;
+      display: flex;
+      justify-content: space-between; 
+      flex-wrap: wrap; 
+      gap:5px;
+      flex-basis: calc(33.33% - 20px);
+  }
+    
+    .deliveriesproduct {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      border: 2px solid red;
+      width: 300px;
+      height: 400px;
+      margin: auto;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    
+    .deliveriesProductImage {
+      max-width: 300px;
+      height: 300px;
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .deliveriesProductImage img {
+      max-width: 100%;
+      max-height: 100%; 
+      object-fit: contain; 
+    }
+    
+      
