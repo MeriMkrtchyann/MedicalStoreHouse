@@ -42,14 +42,13 @@
   .paymentTitle p,
   .paymentForm h3,
   .paymentForm p {
-    margin-bottom: 10px;
+    margin-top: 10px;
     color: #333;
   }
   
   .paymentForm input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
   }
@@ -82,8 +81,4 @@
 
 .sum {
     margin:10px 2px;
-}
-
-.error {
-  color:red;
 }

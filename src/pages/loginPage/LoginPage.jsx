@@ -7,7 +7,7 @@ import readUserData from "../../services/users/firebaseGet"
 import { useTranslation } from 'react-i18next';
 import readAdminData from '../../services/admins/firebaseGet';
 
-export default function LoginPage({ setActiveUser, setBasket, setAdmin, email, setEmail }) {
+export default function LoginPage({ setActiveUser, setBaske, setAdmin, email, setEmail }) {
   const [password, setPassword] = React.useState('');
   const [color, setColor] = React.useState('white');
   const [errorText, setErrorText] = React.useState("errorText");
@@ -32,10 +32,10 @@ export default function LoginPage({ setActiveUser, setBasket, setAdmin, email, s
         localStorage.setItem("activeUser", JSON.stringify(activeUser));
         let updateUserBasket =Object.keys(activeUser).map((value)=> activeUser[value].basket)
         if(updateUserBasket[0]){
-          setBasket(updateUserBasket[0])
+          setBaske(updateUserBasket[0])
           localStorage.setItem("basket", JSON.stringify(updateUserBasket[0]));
         }else {
-          setBasket({})
+          setBaske({})
           localStorage.setItem("basket", JSON.stringify({}));
         }
         navigate("/");
