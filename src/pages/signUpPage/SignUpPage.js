@@ -40,7 +40,6 @@ export function SignUpPage() {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         if (user) {
-          console.log(aboutUser)
           await writeUserData(aboutUser)
           await sendEmailVerification(userCredential.user) 
           setModalText(t("verificationEmailSent"))

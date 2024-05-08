@@ -7,18 +7,24 @@ export default function PaymentForm({ sum,  years, manths, byeProduct, setError 
   const [cardNumberError , setCardNumberError] = useState(false)
   const [cardNameAndSurname , setCardNameAndSurname] = useState("")
   const [cardNameAndSurnameError , setCardNameAndSurnameError] = useState(false)
+  const [cvcNumber , setCvcNumber] = useState("")
+  const [cvcNumberError , setCvcNumberError] = useState(false)
   const [cardYear , setCardYear] = useState("")
   const [cardMonth , setCardMonth] = useState("")
-  const [cvcNumber , setCvcNumber] = useState("")
-  
+
+  if (!cvcNumber || !cardNumber || !cvcNumber ){
+    setError(true)
+  }
 
   const handleCardNumberChange = (event) => {
     const inputNumber = event.target.value.replace(/\D/g, '')
-    if (inputNumber.length <= 16 ) {
+    if (inputNumber.length <= 16) {
       setCardNumber(inputNumber);
       setCardNumberError(true);
+      setError(true)
     } else {
       setCardNumberError(false);
+      setError(false)
     }
   }
 
@@ -30,15 +36,26 @@ export default function PaymentForm({ sum,  years, manths, byeProduct, setError 
     }
     if (!regex.test(inputNameAndSurname)) {
       setCardNameAndSurnameError(true);
+      setError(true)
       return;
     }
     setCardNameAndSurnameError(false);
+    setError(false)
     setCardNameAndSurname(inputNameAndSurname);
   }
 
-  useEffect(()=> {
-
-  },[cardNumberError])
+  const handleChangeCvcNumber = (event) => {
+      const inputCvcNumber = event.target.value;
+      const regex = /^\d{3}$/;
+      if (regex.test(inputCvcNumber)) {
+        setCvcNumberError(false);
+        setError(false)
+      } else {
+        setCvcNumberError(true);
+        setError(true)
+      }
+      setCvcNumber(inputCvcNumber);
+  }
     
   return (
         <div className="paymentForm">
@@ -92,7 +109,13 @@ export default function PaymentForm({ sum,  years, manths, byeProduct, setError 
         <div>
           <h3>CVC2/ CVV2 կոդ</h3> 
           <p>Եռանիշ թիվ, որը գտնվում է քարտի հակառակ կողմում</p>
-          <input type="text" name="cvcNumber" value={cvcNumber} onChange={(event) => setCvcNumber(event.target.value)} />
+          <input 
+            type="text" 
+            name="cvcNumber" 
+            value={cvcNumber} 
+            onChange={handleChangeCvcNumber} 
+          />
+          {cvcNumberError && <span className="paymentError">Խնդրում եմ մութքագրեք Եռանիշ թիվ, որը գտնվում է քարտի հակառակ կողմում</span>}
         </div>
         <div class="paymentButton" onClick={()=>byeProduct()}>
           <button>ՎՃԱՐԵԼ</button>
