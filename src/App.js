@@ -21,7 +21,7 @@ function App() {
   const [allData , setAllData] = useState({});
   const [sum , setSum] = useState(0);
   const [open, setOpen] = useState(false);
-  const [orders , setOrders] = useState([])
+  const [activButtonType , setActivButtonType] = useState("")
 
   useEffect(() => {
     const storedUser = localStorage.getItem("activeUser");
@@ -46,14 +46,14 @@ function App() {
   return (
     <>
       <Routes>
-          <Route path="/" element={<HomePage email={email}  admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open} setAllData={setAllData} allData={allData}/>} />
+          <Route path="/" element={<HomePage setActivButtonType={setActivButtonType} email={email}  admin={admin} setAdmin={setAdmin} activeUser={activeUser} activeCategory={activeCategory} setActiveUser={setActiveUser} setAboutPrductData={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open} setAllData={setAllData} allData={allData}/>} />
           <Route path="/signIn" element={<LoginPage setBaske={setBasket}  email={email} setEmail={setEmail} setActiveUser={setActiveUser} setAdmin={setAdmin} activeUser={activeUser} admin={admin}/>} />
           <Route path="/signUp" element={<SignUpPage activeUser={activeUser}/>}/>
           <Route path="/aboutProduct" element={product ? <Product product={product} activeUser={activeUser} setActiveUser={setActiveUser} setProduct={setProduct} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum}/> : <NotFoundPage/>}/>
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
           <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
           <Route path="/payment" element={<PaymentPage sum={sum}  basket={basket} activeUser={activeUser} setSum={setSum} setBasket={setBasket} setOpen={setOpen} />}/>
-          <Route path="/deliveries" element={<DeliveriesPage activeUser={activeUser} setAllData={setAllData} orders={orders} setOrders={setOrders} email={email} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open}/>}/>
+          <Route path="/deliveries" element={<DeliveriesPage setActivButtonType={setActivButtonType} activButtonType={activButtonType} activeUser={activeUser} setAllData={setAllData} email={email} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open}/>}/>
       </Routes>
     </>
   );

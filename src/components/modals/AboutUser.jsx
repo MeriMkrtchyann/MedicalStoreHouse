@@ -1,37 +1,50 @@
 
+import { useNavigate } from "react-router-dom"
 import { History, Deliveries } from "../icons/Icons"
 import UserAvatar from "../icons/avatars/UserAvatars"
 import "./AboutUser.css"
 
-export default function AboutUser({activeUser}){
+export default function AboutUser({activeUser, setActivButtonType}){
+
+    const navigate = useNavigate()
+    
+    const handleDeliveries = () => {
+        console.log("barev")
+        setActivButtonType("deliveries")
+        navigate("/deliveries")
+    }
+
+    const handleHistory = () => {
+        console.log("barev")
+        setActivButtonType("history")
+        navigate("/deliveries")
+    }
 
     return(
         <div className="aboutModal">
                 <div className="modalConteyner">
                     <div className="aboutUser">
-                            {Object.keys(activeUser).map((id) =>{
-                                return (
-                                    <>
-                                    <div>
-                                        <UserAvatar key={id} userName={activeUser[id].username} />
-                                    </div>
-                                    <div className="userNameAndPhone">
-                                        <p className="userName">{activeUser[id].firstName} </p>
-                                        <p>{activeUser[id].conatct} </p>
-                                    </div>
-                                    </>
-                                )
-                            })}
+                    {Object.values(activeUser).map((user) => (
+                        <div key={user.id}>
+                        <div>
+                            <UserAvatar userName={user.username} />
+                        </div>
+                        <div className="userNameAndPhone">
+                            <p className="userName">{user.firstName}</p>
+                            <p>{user.contact}</p>
+                        </div>
+                        </div>
+                    ))}
                     </div>
-                    <div className="deliveries">
-                        <Deliveries/>
+                    <div className="deliveries" onClick={() => handleDeliveries()}>
+                        <Deliveries />
                         <span>Deliveries</span>
                     </div>
-                    <div className="purchases">
+                    <div className="purchases" onClick={() => handleHistory()}>
                         <div className="purchasesIcon">
-                            <History/>
+                            <History />
                         </div>
-                        <span>History</span>
+                            <span>History</span>
                     </div>
                     
                 </div>
