@@ -29,6 +29,7 @@ function App() {
     const storedAdmin = localStorage.getItem("activeAdmin");
     const storedBasket = localStorage.getItem("basket");
     const storedBaketSum = localStorage.getItem("basketSum");
+    const storedEmail = localStorage.getItem("activeUserEmail");
     if (storedUser) {
       setActiveUser(JSON.parse(storedUser));
     }
@@ -42,13 +43,20 @@ function App() {
       const sum =JSON.parse(storedBaketSum).sum
       setSum(sum)
     }
+    if (storedEmail) {
+      setEmail(JSON.parse(storedEmail))
+    }
   },[]);
 
   useEffect( () => {
     const apdateData = async () => {
-      setActiveUser(await readUserData(email))
+      if (email) {
+        console.log(email)
+        const activeUser = await readUserData(email);
+        setActiveUser(activeUser);
+        localStorage.setItem("activeUser", JSON.stringify(activeUser));
+      }
     }
-    console.log("barev")
     apdateData()
   },[activButtonType])
 
@@ -62,7 +70,7 @@ function App() {
           <Route path="/forgetPassword" element={<PassResetPage/>}/>
           <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
           <Route path="/payment" element={<PaymentPage sum={sum}  basket={basket} activeUser={activeUser} setSum={setSum} setBasket={setBasket} setOpen={setOpen} />}/>
-          <Route path="/deliveries" element={<DeliveriesPage setActivButtonType={setActivButtonType} activButtonType={activButtonType} activeUser={activeUser} setAllData={setAllData} email={email} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open}/>}/>
+          <Route path="/deliveriesOrFilter" element={<DeliveriesPage setActivButtonType={setActivButtonType} activButtonType={activButtonType} activeUser={activeUser} setAllData={setAllData} email={email} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open}/>}/>
       </Routes>
     </>
   );

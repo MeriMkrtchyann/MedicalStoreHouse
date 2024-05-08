@@ -30,6 +30,7 @@ export default function LoginPage({ setActiveUser, setBaske, setAdmin, email, se
         const activeUser = await readUserData(email);
         setActiveUser(activeUser);
         localStorage.setItem("activeUser", JSON.stringify(activeUser));
+        localStorage.setItem("activeUserEmail", JSON.stringify(email));
         let updateUserBasket =Object.keys(activeUser).map((value)=> activeUser[value].basket)
         if(updateUserBasket[0]){
           setBaske(updateUserBasket[0])

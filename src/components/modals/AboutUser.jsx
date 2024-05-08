@@ -11,13 +11,13 @@ export default function AboutUser({activeUser, setActivButtonType}){
     const handleDeliveries = () => {
         console.log("barev")
         setActivButtonType("deliveries")
-        navigate("/deliveries")
+        navigate("/deliveriesOrFilter")
     }
 
     const handleHistory = () => {
         console.log("barev")
         setActivButtonType("history")
-        navigate("/deliveries")
+        navigate("/deliveriesOrFilter")
     }
 
     return(
