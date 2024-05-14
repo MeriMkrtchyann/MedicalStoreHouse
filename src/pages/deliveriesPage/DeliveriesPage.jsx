@@ -13,14 +13,20 @@ export default function DeliveriesPage ({activButtonType, setActivButtonType, ac
     useEffect(() => {
         if (activeUser){
             const activeUserEmail = Object.keys(activeUser).map((id) => activeUser[id].Orders);
-            const ordersArray = Object.keys(activeUserEmail[0]).map((id) => activeUserEmail[0][id]);
-            let ordersData = [];
-            for (let i = 0 ; i < ordersArray.length ; i++){
-                Object.keys(ordersArray[i]).map((id) => ordersData.push(ordersArray[i][id]))
-            } 
-            setOrders(ordersData)
+            if (activeUserEmail[0]) {
+                const ordersArray = Object.keys(activeUserEmail[0]).map((id) => activeUserEmail[0][id])
+                let ordersData = [];
+                if (ordersArray) {
+                    for (let i = 0 ; i < ordersArray.length ; i++){
+                        Object.keys(ordersArray[i]).map((id) => ordersData.push(ordersArray[i][id]))
+                    } 
+                    setOrders(ordersData)
+                }
+            }
         }
     },[activeUser])
+
+   
 
     useEffect(() => {
         if (activButtonType === "deliveries") {

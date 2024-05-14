@@ -35,7 +35,7 @@ export default function Login({handleSubmit,  setEmail, setPassword, color, erro
         <ThemeProvider theme={defaultTheme}>
         <Grid container component="main" className="loginPage" 
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL}/img/loginPageBackgraund.webp)`,
+            backgroundImage: `url(${process.env.PUBLIC_URL}/img/medicalBack.jpg)`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

@@ -31,7 +31,7 @@ export function Registraion({aboutUser , setAboutUser, handleRegistration, }) {
     <ThemeProvider theme={defaultTheme} >
           <Grid container component="main" className="SignUpPage"
             style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL}/img/loginPageBackgraund.webp)`,
+              backgroundImage: `url(${process.env.PUBLIC_URL}/img/medicalBack.jpg)`,
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
