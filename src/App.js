@@ -70,6 +70,7 @@ function App() {
           <Route path="/admin" element={admin ? <AdminPage admin={admin} setAdmin={setAdmin}/> : <NotFoundPage/>}/>
           <Route path="/payment" element={<PaymentPage sum={sum}  basket={basket} activeUser={activeUser} setSum={setSum} setBasket={setBasket} setOpen={setOpen} />}/>
           <Route path="/deliveriesOrFilter" element={<DeliveriesPage setActivButtonType={setActivButtonType} activButtonType={activButtonType} activeUser={activeUser} setAllData={setAllData} email={email} setActiveUser={setActiveUser} setActiveCategory={setActiveCategory} basket={basket} setBasket={setBasket} sum={sum} setSum={setSum} setOpen={setOpen} open={open}/>}/>
+          <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

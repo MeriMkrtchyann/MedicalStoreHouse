@@ -17,7 +17,6 @@ export default function Basket({setBasketQuantityProducts,email, basket, activeU
             const imageArray = Object.keys(basket).map((value) => basket[value].PraductImage )
             setProductImage(imageArray)
         }
-        
     }
 
     const deleteAll = async () => {
