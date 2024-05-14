@@ -25,9 +25,6 @@ export default function AdminNav({drawerWidth , setAdmin}){
             <div>
             </div>
             <div className="iconsContainer">
-              <div className="aboutAdmin">
-                <AdminIcon/>
-              </div>
               <div className="goShopIcon"  onClick={() => navigate("/")}>
                 <FontAwesomeIcon icon={faShopify} />
               </div>
